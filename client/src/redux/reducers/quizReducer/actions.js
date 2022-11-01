@@ -7,16 +7,18 @@ export function getQuestions(questions) {
   };
 }
 
-export function newListQuestions(question) {
+export function changeStatus(id, status) {
   return {
-    type: type.NEW_LIST_QUESTIONS,
-    payload: question,
+    type: type.CHANGE_STATUS,
+    payload: {
+      id,
+      status,
+    },
   };
 }
 
-export function addQuestion(question) {
+export function nextQuestion() {
   return {
-    type: type.addQuestion,
-    payload: question,
+    type: type.NEXT_QUESTION,
   };
 }
