@@ -22,7 +22,7 @@ export default function Layout({ children }) {
   return (
     <>
       <header>
-        <nav>
+        <nav className="flex gap-x-4">
           {user ? (
             <>
               <span>{user.name}</span>
