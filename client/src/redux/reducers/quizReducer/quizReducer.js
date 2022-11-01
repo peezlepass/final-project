@@ -3,7 +3,6 @@ import * as type from "./types";
 const initialState = {
   step: 0,
   allQuestions: [],
-  oneQuestion: [],
 };
 
 function quizReducer(state = initialState, action) {
@@ -12,6 +11,8 @@ function quizReducer(state = initialState, action) {
       return { ...state, allQuestions: action.payload };
     case type.NEXT_QUESTION:
       return { ...state, step: state.step + 1 };
+    case type.RESTART_GAME:
+      return { ...state, step: 0 };
     case type.CHANGE_STATUS:
       return {
         ...state,

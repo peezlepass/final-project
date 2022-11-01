@@ -1,9 +1,18 @@
 .startGame {
   width: 300px;
+  height: 180px;
   margin: 10px auto;
   border: 1px solid black;
   text-align: center;
   padding: 5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  user-select: none;
+}
+
+.title {
+  color: white;
+  text-shadow: 1px 1px black;
 }
 
 .variables {
@@ -11,6 +20,7 @@
 }
 
 .variables div {
+  background: white;
   cursor: pointer;
   border: 1px solid black;
   margin: 5px;

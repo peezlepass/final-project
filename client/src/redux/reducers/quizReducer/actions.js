@@ -22,3 +22,9 @@ export function nextQuestion() {
     type: type.NEXT_QUESTION,
   };
 }
+
+export function restartGame() {
+  return {
+    type: type.RESTART_GAME,
+  };
+}
