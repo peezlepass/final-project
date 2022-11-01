@@ -1,9 +1,13 @@
-import * as type from './types';
+import * as type from "./types";
 
-export function getUser(user) {
-    return { type: type.GET_USER, payload: user }
+export function register(user) {
+  return { type: type.REGISTER, payload: user };
 }
 
-export function destroyUser() {
-    return { type: type.DESTROY_USER }
+export function login(user) {
+  return { type: type.LOGIN, payload: user };
+}
+
+export function logout() {
+  return { type: type.LOGOUT };
 }
