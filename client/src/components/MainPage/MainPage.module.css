@@ -1,0 +1,23 @@
+.main {
+  width: 80%;
+  margin: 10px auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 10px;
+  user-select: none;
+}
+
+.game {
+  cursor: pointer;
+  width: 45%;
+  min-height: 120px;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.game:hover {
+  background: rgb(212, 212, 212);
+}

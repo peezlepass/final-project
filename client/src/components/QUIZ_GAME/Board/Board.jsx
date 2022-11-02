@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import data from "../mock.json";
 import * as action from "../../../redux/reducers/quizReducer/actions";
 import { EndGame } from "../EndGame/EndGame";
 import { Game } from "../Game/Game";

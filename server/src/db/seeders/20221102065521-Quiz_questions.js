@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up(queryInterface, Sequelize) {
+  async up(queryInterface) {
     const questions = [
       {
         question: "Просто какой то вопрос 1",
@@ -79,7 +79,7 @@ module.exports = {
     await queryInterface.bulkInsert("Quizzes", questions);
   },
 
-  async down(queryInterface, Sequelize) {
+  async down(queryInterface) {
     await queryInterface.bulkDelete("Quizzes", null);
   },
 };
