@@ -1,10 +1,9 @@
-import { json } from "react-router-dom";
 import * as type from "./types";
 
 export const getCards = () => {
-  return (duspatch) => {
-    fetch("/cards")
+  return (dispatch) => {
+    fetch("/memorygame")
       .then((res) => res.json())
-      .then((json) => dispatch({ type: type.GET_CARDS, paylaod: json }));
+      .then((json) => dispatch({ type: type.GET_CARDS, payload: json }));
   };
 };

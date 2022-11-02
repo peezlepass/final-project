@@ -41,7 +41,9 @@ export const Game = () => {
             </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <p>loadong</p>
+      )}
     </>
   );
 };
