@@ -11,6 +11,12 @@ export const Board = () => {
   const dispatch = useDispatch();
 
   React.useEffect(() => {
+    fetch("/quiz")
+      .then((res) => res.json())
+      .then((json) => console.log(json));
+  }, []);
+
+  React.useEffect(() => {
     dispatch(action.getQuestions(data));
   }, [dispatch]);
 
