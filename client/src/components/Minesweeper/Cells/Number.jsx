@@ -1,3 +1,3 @@
 export default function Number() {
-  return <div>Number</div>;
+  return <div></div>;
 }
