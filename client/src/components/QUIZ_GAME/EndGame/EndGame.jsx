@@ -9,7 +9,12 @@ export const EndGame = () => {
     <>
       <div className={styles.endGame}>
         <div className={styles.title}>Конец игры</div>
-        <button onClick={() => dispatch(action.restartGame())}>restart</button>
+        <button
+          className={styles.btn}
+          onClick={() => dispatch(action.restartGame())}
+        >
+          restart
+        </button>
       </div>
     </>
   );

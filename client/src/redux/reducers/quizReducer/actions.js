@@ -1,9 +1,10 @@
 import * as type from "./types";
 
-export function getQuestions(questions) {
-  return {
-    type: type.GET_QUESTIONS,
-    payload: questions,
+export function getQuestions() {
+  return (dispatch) => {
+    fetch("/quiz")
+      .then((res) => res.json())
+      .then((json) => dispatch({ type: type.GET_QUESTIONS, payload: json }));
   };
 }
 
