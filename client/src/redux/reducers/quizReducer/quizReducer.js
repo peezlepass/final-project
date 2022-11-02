@@ -14,7 +14,6 @@ function quizReducer(state = initialState, action) {
     case type.RESTART_GAME:
       return { ...state, step: 0 };
     case type.CHANGE_STATUS:
-      console.log(action.payload);
       return {
         ...state,
         allQuestions: state.allQuestions.map((el) =>

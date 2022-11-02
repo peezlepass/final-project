@@ -4,13 +4,21 @@ import { useDispatch } from "react-redux";
 
 export const Card = ({ el }) => {
   const dispatch = useDispatch();
+
+  const [select, setselect] = React.useState({
+    first: "",
+    second: "",
+  });
+
   const userChoice = (id) => {
-    console.log(id);
+    setselect({ ...select, first: id });
+    console.log(select);
   };
+
   return (
     <>
-      <div onClick={() => userChoice(el.id)} className={styles.card}>
-        <img src={el.img} alt={el.id} />
+      <div onClick={() => userChoice(el.cardId)} className={styles.card}>
+        <img src={el.img} alt={el.cardId} />
       </div>
     </>
   );
