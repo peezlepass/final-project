@@ -6,6 +6,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import Layout from "./Layout/Layout";
 import { MainPage } from "./MainPage/MainPage";
+import { MemoryBoard } from "./MEMORY_GAME/Board/MemoryBoard";
 
 export default function App() {
   return (
@@ -15,6 +16,7 @@ export default function App() {
         <Route path="/register" element={<Register></Register>} />
         <Route path="/" element={<MainPage />} />
         <Route path="/quiz" element={<Board />} />
+        <Route path="/memorygame" element={<MemoryBoard />} />
       </Routes>
     </Layout>
   );

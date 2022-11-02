@@ -17,6 +17,9 @@ export const MainPage = () => {
       <Link to="/fashcards" className={styles.game}>
         Flash cards
       </Link>
+      <Link to="/memorygame" className={styles.game}>
+        Memory Game
+      </Link>
     </div>
   );
 };
