@@ -16,7 +16,6 @@
 .title {
   color: white;
   text-shadow: 1px 1px black;
-  transform: translateY(-15px);
 }
 
 .variables {
