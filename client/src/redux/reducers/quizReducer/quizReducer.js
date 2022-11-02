@@ -8,6 +8,7 @@ const initialState = {
 function quizReducer(state = initialState, action) {
   switch (action.type) {
     case type.GET_QUESTIONS:
+      console.log(action);
       return { ...state, allQuestions: action.payload };
     case type.NEXT_QUESTION:
       return { ...state, step: state.step + 1 };
