@@ -1,5 +1,4 @@
 import React, {useRef} from "react";
-import { useInterval } from "../useInterval";
 import {
     CANVAS_SIZE,
     SNAKE_START,
@@ -7,7 +6,7 @@ import {
     SCALE,
     SPEED,
     DIRECTIONS
-} from "../constants";
+  } from "../constants";
 
 import StartBtn from '../StartBtn/StartBtn'
 
