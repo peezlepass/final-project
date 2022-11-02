@@ -10,7 +10,7 @@ export const Card = ({ el }) => {
   return (
     <>
       <div onClick={() => userChoice(el.id)} className={styles.card}>
-        Answer: {el.img}
+        <img src={el.img} alt={el.id} />
       </div>
     </>
   );
