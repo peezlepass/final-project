@@ -1,11 +1,38 @@
 import * as type from "./types";
 
-export function register(user) {
-  return { type: type.REGISTER, payload: user };
+export function register(e) {
+  e.preventDefault();
+  const name = e.target.name.value;
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  return async (dispatch) => {
+    const response = await fetch("/register", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ name, email, password }),
+    });
+    const result = await response.json();
+    dispatch({ type: type.REGISTER, payload: result.user });
+  };
 }
 
-export function login(user) {
-  return { type: type.LOGIN, payload: user };
+export function login(e) {
+  e.preventDefault();
+  const email = e.target.email.value;
+  const password = e.target.password.value;
+  return async (dispatch) => {
+    const response = await fetch("/login", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    const result = await response.json();
+    dispatch({ type: type.LOGIN, payload: result.user });
+  };
 }
 
 export function logout(e) {
