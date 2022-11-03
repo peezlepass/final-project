@@ -19,6 +19,7 @@ export default function Register() {
         <input name="name" placeholder="name" />
         <input name="email" placeholder="email" />
         <input name="password" type="password" placeholder="password" />
+        <button className={styles.btn}>Зарегестрироваться</button>
       </form>
     </div>
   );

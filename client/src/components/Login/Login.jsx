@@ -19,6 +19,7 @@ export default function Login() {
       <form onSubmit={handleSubmit}>
         <input name="email" placeholder="email" />
         <input name="password" type="password" placeholder="password" />
+        <button>Авторизация</button>
       </form>
     </div>
   );
