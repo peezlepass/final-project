@@ -8,6 +8,17 @@ export function login(user) {
   return { type: type.LOGIN, payload: user };
 }
 
-export function logout() {
-  return { type: type.LOGOUT };
+export function logout(e) {
+  e.preventDefault();
+  return async (dispatch) => {
+    const response = await fetch("/logout", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({}),
+    });
+    dispatch({ type: type.LOGOUT });
+  };
 }
