@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { register } from "../../redux/reducers/userReducer/actions";
 import * as action from "../../redux/reducers/modalReducer/actions";
+import styles from "./Register.module.css";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -13,11 +14,12 @@ export default function Register() {
     navigate("/");
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="name" placeholder="name" />
-      <input name="email" placeholder="email" />
-      <input name="password" type="password" placeholder="password" />
-      <button type="submit">Register</button>
-    </form>
+    <div className={styles.registration}>
+      <form onSubmit={handleSubmit}>
+        <input name="name" placeholder="name" />
+        <input name="email" placeholder="email" />
+        <input name="password" type="password" placeholder="password" />
+      </form>
+    </div>
   );
 }

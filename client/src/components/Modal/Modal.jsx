@@ -12,9 +12,17 @@ export const Modal = () => {
     <>
       <div className={styles.overlay}>
         <div className={styles.modal}>
+          <h2 className={styles.title}>
+            {modal.type === "registration" ? "Регистрация" : "Авторизация"}
+          </h2>
           {modal.type === "registration" ? <Register /> : null}
           {modal.type === "login" ? <Login /> : null}
-          <button onClick={() => dispatch(action.closeModal())}>close</button>
+          <button
+            className={styles.btn}
+            onClick={() => dispatch(action.closeModal())}
+          >
+            close
+          </button>
         </div>
       </div>
     </>
