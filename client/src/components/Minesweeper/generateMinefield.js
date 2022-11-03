@@ -12,7 +12,6 @@ function bombIndexes() {
       }
     }
   }
-  console.log(array1);
   return array1;
 }
 
@@ -27,7 +26,7 @@ export function generateMinefield() {
       array2.push(null);
     }
   }
-  console.log(array2);
+
   let row = 9;
   for (let i = 0; i < array2.length; i++) {
     let a = i - row;
