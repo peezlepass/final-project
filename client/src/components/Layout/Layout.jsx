@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/userReducer/actions";
 import { Modal } from "../Modal/Modal";
 import * as action from "../../redux/reducers/modalReducer/actions";
+import styles from "./Layout.module.css";
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -18,10 +19,11 @@ export default function Layout({ children }) {
 
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <nav className="flex gap-x-4">
           {user ? (
             <>
+
               <span>{user.name}</span>
               <button onClick={logoutUser} type="button">
                 Logout
@@ -31,6 +33,7 @@ export default function Layout({ children }) {
             <>
               <div onClick={() => dispatch(action.openLog())}>Login</div>
               <div onClick={() => dispatch(action.openReg())}>Register</div>
+
             </>
           )}
         </nav>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-export default function Restart({ mood }) {
+export default function Restart({ mood, onClick }) {
   let text = "";
   if (mood === "smile") {
     text = "🙂";
@@ -14,6 +14,7 @@ export default function Restart({ mood }) {
     <div
       onMouseDown={() => setPressed(true)}
       onMouseUp={() => setPressed(false)}
+      onClick={onClick}
       className="w-20 h-20 bg-empty-cell-color border-8 ring-4 ring-restart-border text-6xl flex items-center justify-center"
       style={{ borderStyle: pressed ? "inset" : "outset" }}
     >

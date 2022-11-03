@@ -7,7 +7,7 @@ module.exports = {
       {
         cardId: 1,
         img: "https://icons.iconarchive.com/icons/3xhumed/mega-games-pack-39/256/The-Witcher-2-Assassins-of-Kings-2-icon.png",
-        status: "",
+        status: "active",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -21,7 +21,7 @@ module.exports = {
       {
         cardId: 2,
         img: "https://icons.iconarchive.com/icons/3xhumed/mega-games-pack-03/256/The-Witcher-1-icon.png",
-        status: "",
+        status: "correct",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
@@ -42,7 +42,7 @@ module.exports = {
       {
         cardId: 3,
         img: "https://icons.iconarchive.com/icons/3xhumed/mega-games-pack-24/256/The-Witcher-Enhaced-Edition-1-icon.png",
-        status: "",
+        status: "wrong",
         createdAt: new Date(),
         updatedAt: new Date(),
       },

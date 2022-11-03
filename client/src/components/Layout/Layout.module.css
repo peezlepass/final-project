@@ -1,0 +1,29 @@
+/* Можете потом грохунть этот модуль */
+
+.header {
+  background: black;
+  padding: 20px 120px;
+  color: white;
+  user-select: none;
+}
+
+.header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.controls {
+  display: flex;
+  column-gap: 20px;
+}
+
+.btn {
+  background: white;
+  color: black;
+  padding: 5px 20px;
+}
+
+.btn:hover {
+  background: rgb(212, 212, 212);
+}
