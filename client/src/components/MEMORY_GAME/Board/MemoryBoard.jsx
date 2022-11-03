@@ -12,9 +12,27 @@ export const MemoryBoard = () => {
   const cards = useSelector((state) => state.memory);
   const cardsRandom = [...cards].sort(() => Math.random() - 0.5);
 
+  const [prev, setPrev] = React.useState(-1);
+
   React.useEffect(() => {
     dispatch(action.getCards());
   }, []);
+
+  const check = (current) => {
+    if (cards[current].id === cards[prev].id) {
+      alert(1);
+    } else {
+      alert(2);
+    }
+  };
+
+  const userChoice = (id) => {
+    if (prev === -1) {
+      setPrev(id);
+    } else {
+      check(id);
+    }
+  };
 
   return (
     <>
@@ -24,7 +42,7 @@ export const MemoryBoard = () => {
       {cards.length > 0 ? (
         <div className={styles.board}>
           {cardsRandom.map((el, i) => (
-            <Card key={i} el={el} />
+            <Card key={i} el={el} userChoice={userChoice} />
           ))}
         </div>
       ) : (

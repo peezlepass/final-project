@@ -1,25 +1,20 @@
 import React from "react";
 import styles from "./Card.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
-export const Card = ({ el }) => {
+export const Card = ({ el, userChoice }) => {
+  const cards = useSelector((state) => state.memory);
   const dispatch = useDispatch();
-
-  const [select, setselect] = React.useState({
-    first: "",
-    second: "",
-  });
-
-  const userChoice = (id) => {
-    setselect({ ...select, first: id });
-    console.log(select);
-  };
+  const elClass = el.status ? `${el.status}` : "card";
+  console.log(elClass);
 
   return (
     <>
-      <div onClick={() => userChoice(el.cardId)} className={styles.card}>
-        <img src={el.img} alt={el.cardId} />
-      </div>
+      {cards.length > 0 ? (
+        <div onClick={() => userChoice(el.cardId)} className={styles.card}>
+          <img src={el.img} alt={el.cardId} />
+        </div>
+      ) : null}
     </>
   );
 };

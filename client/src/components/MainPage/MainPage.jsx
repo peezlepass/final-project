@@ -14,8 +14,8 @@ export const MainPage = () => {
       <Link to="/xox" className={styles.game}>
         XOX
       </Link>
-      <Link to="/fashcards" className={styles.game}>
-        Flash cards
+      <Link to="/minesweeper" className={styles.game}>
+        Minesweeper
       </Link>
       <Link to="/memorygame" className={styles.game}>
         Memory Game
