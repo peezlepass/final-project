@@ -19,6 +19,7 @@ export default function Canvas() {
     const [dir, setDir] = useState([0, -1]);
     const [speed, setSpeed] = useState(null);
     const [gameOver, setGameOver] = useState(false);
+    const [score, setScore] = useState(0)
 
     useInterval(() => gameLoop(), speed);
 
@@ -63,6 +64,7 @@ export default function Canvas() {
                 newApple = createApple();
             }
             setApple(newApple);
+            setScore(score + 1)
             return true;
         }
         return false;
@@ -89,6 +91,7 @@ export default function Canvas() {
 
     return (
         <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+            {gameOver && <div>GAME OVER! Your score {score}</div>}
             <canvas
                 style={{ border: "1px solid black" }}
                 ref={canvasRef}
