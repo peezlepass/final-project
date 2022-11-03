@@ -4,14 +4,14 @@ import Bomb from "./Cells/Bomb";
 import Empty from "./Cells/Empty";
 import Number from "./Cells/Number";
 
-const typeMap = {
-  unknown: () => <Unknown></Unknown>,
-  bomb: (props) => <Bomb {...props}></Bomb>,
-  bombGuess: (props) => <BombGuess {...props}></BombGuess>,
-  empty: () => <Empty></Empty>,
-  number: (props) => <Number {...props}></Number>,
-};
+export default function Cell({ cell }) {
+  if (cell === "X") {
+    return <Bomb></Bomb>;
+  }
 
-export default function Cell({ type, props }) {
-  return typeMap[type](props);
+  if (cell === 0) {
+    return <Empty></Empty>;
+  }
+
+  return <Number number={cell}></Number>;
 }
