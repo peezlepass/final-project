@@ -15,7 +15,7 @@ export const MainPage = () => {
         XOX
       </Link>
       <Link to="/minesweeper" className={styles.game}>
-        minesweeper
+        Minesweeper
       </Link>
       <Link to="/memorygame" className={styles.game}>
         Memory Game

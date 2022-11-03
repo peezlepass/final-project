@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../redux/reducers/userReducer/actions";
+import styles from "./Layout.module.css";
 
 export default function Layout({ children }) {
   const navigate = useNavigate();
@@ -21,19 +22,29 @@ export default function Layout({ children }) {
   };
   return (
     <>
-      <header>
+      <header className={styles.header}>
         <nav className="flex gap-x-4">
           {user ? (
             <>
-              <span>{user.name}</span>
-              <button onClick={handleLogout} type="button">
-                Logout
+              <div className={styles.controls}>
+                <span>{user.name}</span>
+                <button onClick={handleLogout} type="button">
+                  Logout
+                </button>
+              </div>
+              <button onClick={() => navigate("/")} className={styles.btn}>
+                to main
               </button>
             </>
           ) : (
             <>
-              <Link to="/login">Login</Link>
-              <Link to="/register">Register</Link>
+              <div className={styles.controls}>
+                <Link to="/login">Login</Link>
+                <Link to="/register">Register</Link>
+              </div>
+              <button onClick={() => navigate("/")} className={styles.btn}>
+                to main
+              </button>
             </>
           )}
         </nav>
