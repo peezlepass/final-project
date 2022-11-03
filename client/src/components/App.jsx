@@ -24,8 +24,8 @@ export default function App() {
           path="/minesweeper"
           element={<MinesweeperPage></MinesweeperPage>}
         />
-        <Route path="/" element={<Board/>}/>
-        <Route path="/snake" element={<Canvas/>}/>
+        <Route path="/" element={<Board />} />
+        <Route path="/snake" element={<Canvas />} />
       </Routes>
     </Layout>
   );
