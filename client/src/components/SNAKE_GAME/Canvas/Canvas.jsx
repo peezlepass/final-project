@@ -10,6 +10,7 @@ import {
 import { useInterval } from "../useInterval";
 
 import StartBtn from '../StartBtn/StartBtn'
+import styles from './canvas.module.css'
 
 export default function Canvas() {
     const canvasRef = useRef();
@@ -19,6 +20,7 @@ export default function Canvas() {
     const [dir, setDir] = useState([0, -1]);
     const [speed, setSpeed] = useState(null);
     const [gameOver, setGameOver] = useState(false);
+    const [score, setScore] = useState(0)
 
     useInterval(() => gameLoop(), speed);
 
@@ -28,6 +30,7 @@ export default function Canvas() {
         setDir([0, -1]);
         setSpeed(SPEED);
         setGameOver(false);
+        setScore(0)
     }
 
     const endGame = () => {
@@ -63,6 +66,7 @@ export default function Canvas() {
                 newApple = createApple();
             }
             setApple(newApple);
+            setScore(score + 1)
             return true;
         }
         return false;
@@ -81,16 +85,18 @@ export default function Canvas() {
         const context = canvasRef.current.getContext("2d");
         context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        context.fillStyle = "lightgreen";
+        context.fillStyle = "#07c16c";
         snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-        context.fillStyle = "lightpink";
+        context.fillStyle = "#ffb393";
         context.fillRect(apple[0], apple[1], 1, 1);
       }, [snake, apple, gameOver]);
 
     return (
-        <div role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+        <div className={styles.container} role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+            {gameOver && <div className={styles.gameover}>GAME OVER! Total score: {score}</div>}
+            {!gameOver && <div className={styles.score}>Your score: {score}</div>}
             <canvas
-                style={{ border: "1px solid black" }}
+                className={styles.canvas}
                 ref={canvasRef}
                 width={`${CANVAS_SIZE[0]}px`}
                 height={`${CANVAS_SIZE[1]}px`}
