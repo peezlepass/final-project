@@ -16,7 +16,7 @@ function quizReducer(state = initialState, action) {
     case type.CHANGE_STATUS:
       return {
         ...state,
-        oneQuestion: state.map((el) =>
+        allQuestions: state.allQuestions.map((el) =>
           el.id === action.payload.id
             ? { ...el, status: action.payload.status }
             : el

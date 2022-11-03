@@ -1,0 +1,15 @@
+.card {
+  cursor: pointer;
+  width: 24%;
+  height: 24%;
+  background: red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 5px;
+}
+
+.card:hover {
+  background: rgba(200, 11, 11, 0.814);
+}

@@ -8,14 +8,18 @@ export const Game = () => {
   const step = useSelector((state) => state.quiz.step);
   const dispatch = useDispatch();
 
-  function userAnswer(e) {
+  function userAnswer(e, id) {
     const userChoice = e.target.textContent;
     if (userChoice === questions[step].current) {
       console.log("Верно");
+      dispatch(action.changeStatus(id, true));
     } else {
       console.log("Неверно");
+      dispatch(action.changeStatus(id, false));
     }
-    dispatch(action.nextQuestion());
+    setTimeout(() => {
+      dispatch(action.nextQuestion());
+    }, 1000);
   }
 
   return (
@@ -29,11 +33,17 @@ export const Game = () => {
         >
           <h2 className={styles.title}>{questions[step].question}</h2>
           <div className={styles.variables}>
-            <div onClick={userAnswer}>{questions[step].var1}</div>
-            <div onClick={userAnswer}>{questions[step].var2}</div>
+            <div onClick={(e) => userAnswer(e, questions[step].id)}>
+              {questions[step].var1}
+            </div>
+            <div onClick={(e) => userAnswer(e, questions[step].id)}>
+              {questions[step].var2}
+            </div>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <p>loadong</p>
+      )}
     </>
   );
 };
