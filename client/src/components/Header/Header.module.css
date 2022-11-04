@@ -27,3 +27,8 @@
 .btn:hover {
   background: rgb(212, 212, 212);
 }
+
+.comtrols {
+  display: flex;
+  column-gap: 15px;
+}
