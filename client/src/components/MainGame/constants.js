@@ -1,9 +1,11 @@
 const CANVAS_SIZE = [800, 600];
-const SNAKE_START = [
+const HERO_START = [
   [8, 7],
   [8, 8]
 ];
-const APPLE_START = [8, 3];
+const SNAKE_GAME = [
+  [3, 3],
+];
 const SCALE = 40;
 const SPEED = 100;
 const DIRECTIONS = {
@@ -15,9 +17,9 @@ const DIRECTIONS = {
 
 export {
   CANVAS_SIZE,
-  SNAKE_START,
-  APPLE_START,
+  HERO_START,
   SCALE,
   SPEED,
-  DIRECTIONS
+  DIRECTIONS,
+  SNAKE_GAME
 };

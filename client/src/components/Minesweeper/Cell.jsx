@@ -1,3 +1,17 @@
-export default function Cell() {
-  return <div>Cell</div>;
+import BombGuess from "./Cells/BombGuess";
+import Unknown from "./Cells/Unknown";
+import Bomb from "./Cells/Bomb";
+import Empty from "./Cells/Empty";
+import Number from "./Cells/Number";
+
+export default function Cell({ cell }) {
+  if (cell === "X") {
+    return <Bomb></Bomb>;
+  }
+
+  if (cell === 0) {
+    return <Empty></Empty>;
+  }
+
+  return <Number number={cell}></Number>;
 }
