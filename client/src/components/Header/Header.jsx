@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { logout } from "../../redux/reducers/userReducer/actions";
 import { Modal } from "../Modal/Modal";
 import * as action from "../../redux/reducers/modalReducer/actions";
@@ -22,11 +22,13 @@ export default function Header() {
       <header className={styles.header}>
         {user ? (
           <div className={styles.container}>
-            <div className={styles.logo}>Logo</div>
+            <div className={styles.logo}>
+              <h1>LOGO</h1>
+            </div>
             <div className={styles.usermenu}>
               <div className={styles.menu}>
-                <span>{user.name}</span>
                 <div className={styles.profile}>
+                  <Link to="/cabinet">{user.name}</Link>
                   <img
                     src="http://www.rw-designer.com/icon-image/14773-128x128x8.png"
                     alt="logo"
@@ -47,12 +49,6 @@ export default function Header() {
               <div className={styles.menu}>
                 <div onClick={() => dispatch(action.openLog())}>Login</div>
                 <div onClick={() => dispatch(action.openReg())}>Register</div>
-              </div>
-              <div className={styles.profile}>
-                <img
-                  src="http://www.rw-designer.com/icon-image/14773-128x128x8.png"
-                  alt="logo"
-                />
               </div>
             </div>
           </div>

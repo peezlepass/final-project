@@ -40,11 +40,25 @@
   column-gap: 20px;
 }
 
+.profile {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
 .profile img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   background: red;
+}
+
+.profile a {
+  cursor: pointer;
+}
+
+.profile a:hover {
+  text-decoration: underline;
 }
 
 .btn {
