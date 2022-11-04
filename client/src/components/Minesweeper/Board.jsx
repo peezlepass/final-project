@@ -1,14 +1,10 @@
 import Header from "./Header";
 import Field from "./Field";
-import { useState, useReducer } from "react";
+import { useReducer } from "react";
 import { generateMinefield, generateUserField } from "./generateMinefield";
 import minesweeperReducer from "./reducer";
 
 export default function Board() {
-  // const [minefield, setMinefield] = useState(generateMinefield());
-  // const [userField, setUserField] = useState(generateUserField());
-  // const [guessesRemaining, setGuessesRemaining] = useState(10);
-  // const [timer, setTimer] = useState(0);
   const initialState = {
     minefield: generateMinefield(),
     userField: generateUserField(),
@@ -24,7 +20,7 @@ export default function Board() {
       <Header
         leftCounter={state.guessesRemaining}
         rightCounter={state.timer}
-        // clickRestart={() => setMinefield(generateMinefield())}
+        dispatch={dispatch}
       ></Header>
       <Field
         userField={state.userField}
