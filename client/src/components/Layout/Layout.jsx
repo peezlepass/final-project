@@ -6,7 +6,7 @@ import { Modal } from "../Modal/Modal";
 import * as action from "../../redux/reducers/modalReducer/actions";
 import styles from "./Layout.module.css";
 
-export default function Layout({ children }) {
+export default function Layout() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((store) => store.user.user);
@@ -23,7 +23,6 @@ export default function Layout({ children }) {
         <nav className="flex gap-x-4">
           {user ? (
             <>
-
               <span>{user.name}</span>
               <button onClick={logoutUser} type="button">
                 Logout
@@ -33,12 +32,10 @@ export default function Layout({ children }) {
             <>
               <div onClick={() => dispatch(action.openLog())}>Login</div>
               <div onClick={() => dispatch(action.openReg())}>Register</div>
-
             </>
           )}
         </nav>
       </header>
-      <div>{children}</div>
       {modal.close ? <Modal /> : null}
     </>
   );
