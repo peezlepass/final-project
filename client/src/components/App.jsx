@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import { Board } from "./QUIZ_GAME/Board/Board";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
-import Layout from "./Layout/Layout";
+import Header from "./Header/Header";
 import { MainPage } from "./MainPage/MainPage";
 import { MemoryBoard } from "./MEMORY_GAME/Board/MemoryBoard";
 import MinesweeperPage from "./Minesweeper/MinesweeperPage";
@@ -14,7 +14,7 @@ import { Sidebar } from "./Sidebar/Sidebar";
 export default function App() {
   return (
     <>
-      <Layout />
+      <Header />
       <Sidebar />
       <Routes>
         <Route path="/login" element={<Login></Login>} />
