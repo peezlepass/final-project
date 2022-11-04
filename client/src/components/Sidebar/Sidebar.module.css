@@ -1,8 +1,0 @@
-.sidebar {
-  width: 10%;
-  height: 100vh;
-  background: black;
-  position: fixed;
-  top: 0;
-  z-index: -2;
-}

@@ -9,13 +9,11 @@ import { MainPage } from "./MainPage/MainPage";
 import { MemoryBoard } from "./MEMORY_GAME/Board/MemoryBoard";
 import MinesweeperPage from "./Minesweeper/MinesweeperPage";
 import Canvas from "./SNAKE_GAME/Canvas/Canvas";
-import { Sidebar } from "./Sidebar/Sidebar";
 
 export default function App() {
   return (
     <>
       <Header />
-      <Sidebar />
       <Routes>
         <Route path="/login" element={<Login></Login>} />
         <Route path="/register" element={<Register></Register>} />
