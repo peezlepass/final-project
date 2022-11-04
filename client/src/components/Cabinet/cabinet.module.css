@@ -1,0 +1,63 @@
+.layout {
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: black;
+  user-select: none;
+}
+
+.cabinet {
+  width: 1300px;
+  background: white;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.cabinetHeader {
+  width: 100%;
+  height: 100px;
+}
+
+.cabinetHeader::after {
+  position: absolute;
+  top: 110px;
+  left: 50%;
+  transform: translateX(-50%);
+  content: '';
+  background: gray;
+  width: 90%;
+  height: 2px;
+  margin: 0 auto;
+}
+
+.userName {
+  font-size: 32px;
+  text-align: left;
+  padding: 20px 0 0 60px;
+}
+
+.userInfo {
+  width: 100%;
+  height: 500px;
+  background: tomato;
+  margin-top: 20px;
+}
+
+.userControls {
+  display: flex;
+  column-gap: 20px;
+}
+
+.userControls div {
+  font-size: 24px;
+  border: 1px solid gray;
+  cursor: pointer;
+  padding: 0 10px;
+  margin-left: 5px;
+  transform: translateY(5px)
+}
+
+.userControls div:hover {
+  background: black;
+  color: white
+}
