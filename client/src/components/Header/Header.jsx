@@ -23,7 +23,7 @@ export default function Header() {
         {user ? (
           <div className={styles.container}>
             <div className={styles.logo}>
-              <h1>LOGO</h1>
+              <h1 onClick={() => navigate("/")}>LOGO</h1>
             </div>
             <div className={styles.usermenu}>
               <div className={styles.menu}>
