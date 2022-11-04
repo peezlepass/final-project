@@ -9,6 +9,7 @@ import { MainPage } from "./MainPage/MainPage";
 import { MemoryBoard } from "./MEMORY_GAME/Board/MemoryBoard";
 import MinesweeperPage from "./Minesweeper/MinesweeperPage";
 import Canvas from "./SNAKE_GAME/Canvas/Canvas";
+import Field from "./MainGame/Field/Field";
 
 export default function App() {
   return (
@@ -26,6 +27,7 @@ export default function App() {
         />
         <Route path="/" element={<Board/>}/>
         <Route path="/snake" element={<Canvas/>}/>
+        <Route path="/maingame" element={<Field/>}/>
       </Routes>
     </Layout>
   );

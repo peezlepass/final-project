@@ -1,0 +1,16 @@
+/* .field {
+    border: 3px solid blue;
+}
+.row {
+    display: flex;
+}
+.tile {
+    width: 100px;
+    height: 100px;
+    border: 2px solid red;
+} */
+.container {
+    /* background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQy6JGaAhtxkqoIso9FxTPpX9vENBv5hmdv3caMHzvwA9Y1meGN4e_TyuYNgdZnol1zzjU&usqp=CAU") no-repeat; */
+    background-size: 100%;
+    background-color: green;
+}
