@@ -1,12 +1,21 @@
-import { generateMinefield, generateUserField } from "./generateMinefield";
+import {
+  findReveals,
+  generateMinefield,
+  generateUserField,
+} from "./minesweeper";
 
 export default function minesweeperReducer(prevState, { type, payload }) {
   switch (type) {
     case "REVEAL_CELL":
+      const reveals = findReveals(
+        payload,
+        prevState.minefield,
+        prevState.userField
+      );
       return {
         ...prevState,
         userField: prevState.userField.map((cell, index) => {
-          if (index === payload) {
+          if (reveals.includes(index)) {
             return prevState.minefield[index];
           } else {
             return cell;
