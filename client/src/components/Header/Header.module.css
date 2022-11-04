@@ -1,0 +1,68 @@
+/* Можете потом грохунть этот модуль */
+
+.header {
+  width: 100%;
+  height: 80px;
+  color: white;
+  background: black;
+  user-select: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+  color: white;
+}
+
+.usermenu {
+  display: flex;
+  column-gap: 50px;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 30px;
+  color: red;
+  cursor: pointer;
+}
+
+.menu {
+  display: flex;
+  column-gap: 20px;
+}
+
+.profile {
+  display: flex;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.profile img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: red;
+}
+
+.profile a {
+  cursor: pointer;
+}
+
+.profile a:hover {
+  text-decoration: underline;
+}
+
+.btn {
+  background: white;
+  color: black;
+  padding: 5px 20px;
+}
+
+.btn:hover {
+  background: rgb(212, 212, 212);
+}
