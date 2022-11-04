@@ -38,16 +38,12 @@ export default function Field({ height = 600, width = 800 }) {
         setSpeed(SPEED);
     }
 
-    const moveHero = ({ keyCode }) => {
-        keyCode >= 37 && keyCode <= 40 && setDir(DIRECTIONS[keyCode]);
-    }
-
     const gameLoop = () => {
         const heroCopy = JSON.parse(JSON.stringify(hero));
-        // const newHeroHead = [heroCopy[0][0] + dir[0], heroCopy[0][1] + dir[1]];
-        // heroCopy.unshift(newHeroHead);
-        // setHero(heroCopy);
-        // console.log(newHeroHead)
+        const newHeroHead = [heroCopy[0][0] + dir[0], heroCopy[0][1] + dir[1]];
+        heroCopy.unshift(newHeroHead);
+        setHero(heroCopy);
+        console.log(heroCopy)
     };
 
 
@@ -66,10 +62,9 @@ export default function Field({ height = 600, width = 800 }) {
         // context.fillStyle = "red";
         // tile.forEach(([x,y]) => context.fillRect(x,y, 2, 2))
     }, [hero]);
-    // console.log(canvasRef.current.getContext("2d"))
 
     return (
-        <div className={styles.container} role="button" tabIndex="0" onKeyDown={e => moveHero(e)}>
+        <div id="container" className={styles.container} role="button" tabIndex="0" onKeyDown={e => moveHero(e)}>
             <canvas
                 style={{
                     border: "3px solid black",
