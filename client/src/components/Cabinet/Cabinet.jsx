@@ -2,9 +2,21 @@ import React from "react";
 import { useSelector } from "react-redux";
 import styles from "./cabinet.module.css";
 
+const activeBtn = {
+  background: "black",
+  color: "white",
+};
+
 export const Cabinet = () => {
   const user = useSelector((state) => state.user.user);
-  console.log(user);
+  const [select, setSelect] = React.useState({
+    1: true,
+    2: false,
+    3: false,
+  });
+  const selectBtn = (num) => {
+    setSelect({ [num]: true });
+  };
   return (
     <>
       <div className={styles.layout}>
@@ -13,9 +25,24 @@ export const Cabinet = () => {
             <div className={styles.userName}>
               {user.name}
               <div className={styles.userControls}>
-                <div>Профиль</div>
-                <div>Достижения</div>
-                <div>Таблица рекордов</div>
+                <div
+                  onClick={() => selectBtn(1)}
+                  style={select["1"] ? activeBtn : null}
+                >
+                  Профиль
+                </div>
+                <div
+                  onClick={() => selectBtn(2)}
+                  style={select["2"] ? activeBtn : null}
+                >
+                  Достижения
+                </div>
+                <div
+                  onClick={() => selectBtn(3)}
+                  style={select["3"] ? activeBtn : null}
+                >
+                  Таблица рекордов
+                </div>
               </div>
             </div>
           </div>
