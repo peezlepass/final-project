@@ -23,12 +23,28 @@ export default function Board() {
   } else if (state.gameStatus === "over") {
     mood = "dead";
   }
+  // Start the timer when the component mounts
   useEffect(() => {
     const interval = setInterval(() => {
       dispatch({ type: "INCREMENT_TIMER" });
     }, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  // When user wins => send fetch to store points
+  // Array of dependensies means whenever game status
+  // changes this effect will run again
+  useEffect(() => {
+    if (state.gameStatus === "won") {
+      fetch("/scores", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ gameName: "minesweeper", score: 100 }),
+      });
+    }
+  }, [state.gameStatus]);
 
   return (
     <div
