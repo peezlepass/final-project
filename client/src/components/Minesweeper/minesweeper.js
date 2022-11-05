@@ -172,3 +172,13 @@ export function findReveals(index, minefield, userField, revealSoFar = []) {
 
   return revealSoFar;
 }
+
+// Мапим поле юзера, чтобы осталось только поле из 10 ячеек не цифр.
+// Тогда юзер победил
+export function hasWon(userField) {
+  return (
+    userField.filter((cell) => {
+      return typeof cell !== "number";
+    }).length === 10
+  );
+}
