@@ -87,21 +87,30 @@ export default function Canvas() {
         context.clearRect(0, 0, window.innerWidth, window.innerHeight);
         context.fillStyle = "#07c16c";
         snake.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-        context.fillStyle = "#ffb393";
-        context.fillRect(apple[0], apple[1], 1, 1);
-      }, [snake, apple, gameOver]);
+        context.fillStyle = "red";//🍎
+        context.fillRect(apple[0], apple[1], 1, 1);//работает
+        // const img = new Image();
+        // img.src = 'https://emojis.wiki/emoji-pics/facebook/red-apple-facebook.png'
+        // img.onload = () => {
+        //     const pattern = context.createPattern(img, "no-repeat");
+        //     context.fillStyle = pattern;
+        //     context.fillRect(apple[0], apple[1], 1, 1);
+        // };
+    }, [snake, apple, gameOver]);
 
     return (
-        <div className={styles.container} role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
-            {gameOver && <div className={styles.gameover}>GAME OVER! Total score: {score}</div>}
-            {!gameOver && <div className={styles.score}>Your score: {score}</div>}
-            <canvas
-                className={styles.canvas}
-                ref={canvasRef}
-                width={`${CANVAS_SIZE[0]}px`}
-                height={`${CANVAS_SIZE[1]}px`}
-            />
-            <StartBtn startGame={startGame} />
+        <div className={styles.wrapper}>
+            <div className={styles.container} role="button" tabIndex="0" onKeyDown={e => moveSnake(e)}>
+
+                {gameOver ? <div className={styles.gameover}>GAME OVER! Total score: {score}</div> : <div className={styles.score}>Your score: {score}</div>}
+                <canvas
+                    className={styles.canvas}
+                    ref={canvasRef}
+                    width={`${CANVAS_SIZE[0]}px`}
+                    height={`${CANVAS_SIZE[1]}px`}
+                />
+                <StartBtn startGame={startGame} />
+            </div>
         </div>
     )
 }
