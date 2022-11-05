@@ -4,30 +4,7 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-evenly;
+  flex-wrap: wrap;
   align-items: center;
-}
-
-.achive {
-  width: 90%;
-  margin: 0 auto;
-  height: 85px;
-  padding: 10px 15px;
-  color: #555555;
-  font-size: 14px;
-  line-height: 20px;
-  border: 1px solid black;
-  display: flex;
-  justify-content: space-between;
-}
-
-.achiveImg {
-  width: 64px;
-  height: 64px;
-  background: gray;
-}
-
-.achiveInfo {
-  width: 92%;
-  height: 100%;
-  background: tomato;
+  row-gap: 5px;
 }
