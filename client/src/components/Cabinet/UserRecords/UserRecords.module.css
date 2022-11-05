@@ -1,0 +1,58 @@
+.userRecords {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.userRecordsTitle {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 15px;
+  color: #555555;
+  font-size: 14px;
+  line-height: 20px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  background: rgba(220, 220, 220, 0.392);
+  display: flex;
+}
+
+.userRecordsUserScore {
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 15px;
+  color: #555555;
+  font-size: 14px;
+  line-height: 20px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  background: rgba(220, 220, 220, 0.392);
+  display: flex;
+}
+
+.userRecordsTitle div,
+.userRecordsUserScore div {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px 10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.userRecordsUserScore div {
+  border: none;
+}
+
+.userRecordsTitle div:nth-child(1),
+.userRecordsUserScore div:nth-child(1) {
+  flex: 1;
+}
+
+.userRecordsTitle div:nth-child(2),
+.userRecordsUserScore div:nth-child(2) {
+  flex: 5;
+}
+
+.userRecordsTitle div:nth-child(3),
+.userRecordsUserScore div:nth-child(3) {
+  flex: 2;
+}
