@@ -26,7 +26,7 @@ exports.highScores = async (req, res) => {
     on u."id" = s."userId" 
     group by "userId", u."name"
     order by totalScore desc
-    limit 10
+    limit 5
   `;
 
   const [result] = await sequelize.query(query);
