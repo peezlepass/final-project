@@ -8,19 +8,19 @@ export const MainPage = () => {
       <div className={styles.main}>
         <div className={styles.content}>
           <div className={styles.slider}>
-            <Link to="/quiz" className={styles.game}>
+            <Link to="/quiz" className={styles.gamecat}>
               Quiz
             </Link>
             <Link to="/snake" className={styles.gamesnake}>
               Snake
             </Link>
-            <Link to="/xox" className={styles.game}>
+            <Link to="/xox" className={styles.gamebear}>
               XOX
             </Link>
-            <Link to="/minesweeper" className={styles.game}>
+            <Link to="/minesweeper" className={styles.gamewolf}>
               Minesweeper
             </Link>
-            <Link to="/memorygame" className={styles.game}>
+            <Link to="/memorygame" className={styles.gamedragon}>
               Memory Game
             </Link>
           </div>
