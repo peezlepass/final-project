@@ -1,38 +1,77 @@
 import React from "react";
-import styles from "./UserRecords.module.css";
+import { useState, useEffect } from "react";
 
-const mock = [
-  { id: 1, name: "Vadim", score: 120 },
-  { id: 2, name: "Maxim", score: 220 },
-  { id: 3, name: "Elena", score: 1000 },
-  { id: 4, name: "Anton", score: 120 },
-  { id: 5, name: "Polina", score: 980 },
-  { id: 6, name: "Roman", score: 190 },
-  { id: 7, name: "Sveta", score: 140 },
-  { id: 8, name: "Kirill", score: 340 },
-  { id: 9, name: "Maxim", score: 450 },
-  { id: 10, name: "Olga", score: 720 },
-];
-
-export const UserRecords = () => {
-  // тут надо будет вытянуть 10 юзеров и сделать sort, но не на селекторе а через спред
-  const sortMock = [...mock].sort((a, b) => b.score - a.score);
-  return (
-    <>
-      <div className={styles.userRecords}>
-        <div className={styles.userRecordsTitle}>
-          <div>№</div>
-          <div>Имя</div>
-          <div>Очки</div>
-        </div>
-        {sortMock.map((el, i) => (
-          <div key={el.id} className={styles.userRecordsUserScore}>
-            <div>{i + 1}</div>
-            <div>{el.name}</div>
-            <div>{el.score}</div>
-          </div>
-        ))}
-      </div>
-    </>
-  );
+const findScore = (scores, gameName) => {
+  return scores.find((score) => {
+    return score.gameName === gameName;
+  })?.totalscore;
 };
+
+export function UserRecords() {
+  const [highScores, setHighScores] = useState([]);
+  const [yourScores, setYourScores] = useState([]);
+
+  useEffect(() => {
+    (async () => {
+      const highScoresResponse = await fetch("/scores/high-scores");
+      const yourScoresResponse = await fetch("/scores/user");
+      const highScoresResult = await highScoresResponse.json();
+      const yourScoresResult = await yourScoresResponse.json();
+      setHighScores(highScoresResult.data);
+      setYourScores(yourScoresResult.data);
+    })();
+  }, []);
+
+  return (
+    <div className="mt-8 bg-black pt-4 text-white pb-8">
+      <h1 className="text-9xl font-bold text-center border-y-4 pb-1.5 text-witcher-gold">
+        HIGH SCORES
+      </h1>
+      <ol className=" flex flex-col items-center text-4xl my-6">
+        {highScores.map((score) => {
+          return (
+            <li key={score.userId} className="py-3 w-96 flex justify-between">
+              <span>{score.name}</span>
+              <span>{score.totalscore}</span>
+            </li>
+          );
+        })}
+      </ol>
+      <h2 className="text-7xl font-bold text-center border-y-4 pb-1.5 text-witcher-gold mb-4">
+        YOUR SCORES
+      </h2>
+      <ol className="flex justify-around">
+        <li className="flex flex-col items-center">
+          <img src="/img/wolf.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Minesweeper</h3>
+          <span>{findScore(yourScores, "minesweeper")}</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <img className="" src="/img/cat.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Quiz</h3>
+          <span>{findScore(yourScores, "quiz")}</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <img src="/img/dragon.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Memory</h3>
+          <span>{findScore(yourScores, "memorygame")}</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <img src="/img/lion.jpg" />
+          <h3 className="font-bold uppercase text-2xl">X O X</h3>
+          <span>{findScore(yourScores, "xox")}</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <img src="/img/snake.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Snake</h3>
+          <span>{findScore(yourScores, "snake")}</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <img src="/img/wolf.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Flashcards</h3>
+          <span>{findScore(yourScores, "flashcards")}</span>
+        </li>
+      </ol>
+    </div>
+  );
+}
