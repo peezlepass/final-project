@@ -53,6 +53,15 @@
   text-align: center;
 }
 
+.gamesnake:hover {
+  background: rgb(212, 212, 212);
+  transform: scale(1.2);
+  background-image: url('https://vignette.wikia.nocookie.net/witcher/images/b/bb/Viper_School_medallion.png/revision/latest?cb=20190503155758');
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
 .game:hover {
   background: rgb(212, 212, 212);
   transform: scale(1.2);
