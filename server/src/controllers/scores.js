@@ -20,7 +20,7 @@ exports.createScore = async (req, res) => {
 
 exports.highScores = async (req, res) => {
   const query = `
-    select SUM(score) as totalScore, u."name"
+    select SUM(score) as totalScore, u."name", s."userId"
     from "Scores" s
     join "Users" u
     on u."id" = s."userId" 
