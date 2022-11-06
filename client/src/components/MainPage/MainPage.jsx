@@ -11,7 +11,7 @@ export const MainPage = () => {
             <Link to="/quiz" className={styles.game}>
               Quiz
             </Link>
-            <Link to="/snake" className={styles.game}>
+            <Link to="/snake" className={styles.gamesnake}>
               Snake
             </Link>
             <Link to="/xox" className={styles.game}>
