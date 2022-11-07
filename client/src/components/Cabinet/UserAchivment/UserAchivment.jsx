@@ -1,20 +1,22 @@
 import React from "react";
 import { OneAchiv } from "./OneAchiv/OneAchiv";
-import styles from "./UserAchivment.module.css";
 import { Spinner } from "../../Spinner/Spinner";
+import styles from "./UserAchivment.module.css";
+import * as action from "../../../redux/reducers/achivReducer/action";
+import { useDispatch, useSelector } from "react-redux";
 
 export const UserAchivment = () => {
-  const [state, setState] = React.useState([]);
+  const achivState = useSelector((state) => state.achiv);
+  console.log(achivState);
+  const dispatch = useDispatch();
   React.useEffect(() => {
-    fetch("/cabinet")
-      .then((res) => res.json())
-      .then((json) => setState(json));
+    dispatch(action.getAchiv());
   }, []);
   return (
     <>
-      {state.length > 0 ? (
+      {achivState.length > 0 ? (
         <div className={styles.userAchivment}>
-          {state.map((el, i) => (
+          {achivState.map((el, i) => (
             <OneAchiv key={i} el={el} />
           ))}
         </div>
