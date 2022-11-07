@@ -29,7 +29,7 @@
 }
 
 .game {
-  border: 1px solid white;
+  border: 1px solid rgb(212, 212, 212);
   width: 270px;
   height: 200px;
   transition: 0.6s linear;
@@ -40,7 +40,7 @@
 }
 .gamesnake {
   color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgb(212, 212, 212);
   width: 270px;
   height: 200px;
   transition: 0.6s linear;
@@ -63,7 +63,7 @@
 
 .gamewolf {
   color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgb(212, 212, 212);
   width: 270px;
   height: 200px;
   transition: 0.6s linear;
@@ -86,7 +86,7 @@
 }
 .gamebear {
   color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgb(212, 212, 212);
   width: 270px;
   height: 200px;
   transition: 0.6s linear;
@@ -108,7 +108,7 @@
 }
 .gamedragon {
   color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgb(212, 212, 212);
   width: 270px;
   height: 200px;
   transition: 0.6s linear;
@@ -130,7 +130,7 @@
 }
 .gamecat {
   color: transparent;
-  border: 1px solid white;
+  border: 1px solid rgb(212, 212, 212);
   width: 270px;
   height: 200px;
   transition: 0.6s linear;
