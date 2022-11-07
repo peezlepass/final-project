@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import * as action from "../../../redux/reducers/quizReducer/actions";
+import { Spinner } from "../../Spinner/Spinner";
 import styles from "./StartGame.module.css";
 
 export const Game = () => {
@@ -42,7 +43,7 @@ export const Game = () => {
           </div>
         </div>
       ) : (
-        <p>loadong</p>
+        <Spinner />
       )}
     </>
   );
