@@ -9,6 +9,8 @@ module.exports = (sequelize, DataTypes) => {
       question: DataTypes.TEXT,
       var1: DataTypes.TEXT,
       var2: DataTypes.TEXT,
+      var3: DataTypes.TEXT,
+      var4: DataTypes.TEXT,
       current: DataTypes.TEXT,
       status: DataTypes.BOOLEAN,
       img: DataTypes.TEXT,

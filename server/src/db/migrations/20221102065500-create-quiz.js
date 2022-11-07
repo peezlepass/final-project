@@ -18,6 +18,12 @@ module.exports = {
       var2: {
         type: Sequelize.TEXT,
       },
+      var3: {
+        type: Sequelize.TEXT,
+      },
+      var4: {
+        type: Sequelize.TEXT,
+      },
       current: {
         type: Sequelize.TEXT,
       },

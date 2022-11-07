@@ -21,5 +21,9 @@ export const Board = () => {
     navigate("/");
   };
 
-  return <>{questions.length !== step ? <Game /> : <EndGame />}</>;
+  return (
+    <div className={styles.main}>
+      {questions.length !== step ? <Game /> : <EndGame />}
+    </div>
+  );
 };

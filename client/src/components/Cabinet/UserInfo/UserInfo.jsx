@@ -22,7 +22,7 @@ export const UserInfo = ({ user }) => {
             <div>12.11.1991</div>
           </div>
           <div className={styles.userLocation}>
-            <div>Местонахлждение</div>
+            <div>Местонахождение</div>
             <div>Тайланд</div>
           </div>
           <div className={styles.userMeeting}>
