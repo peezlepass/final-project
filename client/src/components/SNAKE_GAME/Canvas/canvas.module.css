@@ -12,9 +12,10 @@
 }
 .wrapper {
     background: url('https://i.pinimg.com/originals/fb/e2/a0/fbe2a0b7d9b66aa32e7ea8026cf5b4e6.jpg') no-repeat;
-    height: 100%;
+    min-height: 100vh;
     /* margin-top: -20px; */
-    background-size: 100%;
+    background-size: cover;
+    height: 91.5vh;
 }
 .score, .gameover {
     font-size: 30px;

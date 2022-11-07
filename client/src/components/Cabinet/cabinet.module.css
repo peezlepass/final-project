@@ -1,6 +1,6 @@
 .layout {
   width: 100%;
-  height: calc(100vh - 80px);
+  min-height: calc(100vh - 80px);
   background: black;
   user-select: none;
 }
@@ -23,7 +23,7 @@
   top: 110px;
   left: 50%;
   transform: translateX(-50%);
-  content: '';
+  content: "";
   background: gray;
   width: 90%;
   height: 2px;
@@ -47,10 +47,10 @@
   cursor: pointer;
   padding: 0 10px;
   margin-left: 5px;
-  transform: translateY(5px)
+  transform: translateY(5px);
 }
 
 .userControls div:hover {
   background: black;
-  color: white
+  color: white;
 }
