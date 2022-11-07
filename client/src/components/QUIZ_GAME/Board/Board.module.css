@@ -1,3 +1,5 @@
-.btn {
-  background: gray;
+.main {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.2), #151515c2), url('https://pbs.twimg.com/media/CKm7EjSUAAAixf0.jpg:large');
+  width: 100%;
+  height: calc(100vh - 80px);
 }
