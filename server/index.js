@@ -9,6 +9,7 @@ const authenticationRouter = require("./src/routers/authentication");
 const quizRouter = require("./src/routers/quizGame");
 const memoryRouter = require("./src/routers/memoryGame");
 const scoresRouter = require("./src/routers/scores");
+const achivRouter = require("./src/routers/achive");
 
 const app = express();
 const { PORT, SECRET } = process.env;
@@ -33,5 +34,6 @@ app.use("/", authenticationRouter);
 app.use("/", quizRouter);
 app.use("/", memoryRouter);
 app.use("/", scoresRouter);
+app.use("/", achivRouter);
 
 app.listen(PORT, () => console.log(`Server started on PORT ${PORT}`));

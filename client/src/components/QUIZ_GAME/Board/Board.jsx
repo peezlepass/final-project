@@ -21,12 +21,5 @@ export const Board = () => {
     navigate("/");
   };
 
-  return (
-    <>
-      <button className={styles.btn} onClick={exitGame}>
-        Main menu
-      </button>
-      {questions.length !== step ? <Game /> : <EndGame />}
-    </>
-  );
+  return <>{questions.length !== step ? <Game /> : <EndGame />}</>;
 };

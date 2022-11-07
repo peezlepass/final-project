@@ -1,38 +1,34 @@
 import React from "react";
 import { OneAchiv } from "./OneAchiv/OneAchiv";
+import { Spinner } from "../../Spinner/Spinner";
 import styles from "./UserAchivment.module.css";
+import * as action from "../../../redux/reducers/achivReducer/action";
+import { useDispatch, useSelector } from "react-redux";
 
-const achiveIcon = [
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP000_w100h100.PNG",
-  },
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP010_w100h100.PNG",
-  },
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP038_w100h100.PNG",
-  },
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP004_w100h100.PNG",
-  },
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP015_w100h100.PNG",
-  },
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP018_w100h100.PNG",
-  },
-  {
-    img: "https://static.stratege.ru/trophies/NPWR11536_00/TROP023_w100h100.PNG",
-  },
-];
 export const UserAchivment = () => {
+  const achivState = useSelector((state) => state.achiv);
+  const sorted = [...achivState].sort((a, b) => a.id - b.id);
+  const dispatch = useDispatch();
+  React.useEffect(() => {
+    dispatch(action.getAchiv());
+  }, [dispatch]);
+  const testUnlock = (id) => {
+    dispatch(action.changeStatus(id));
+  };
   return (
     <>
-      <div className={styles.userAchivment}>
-        {achiveIcon.map((el, i) => (
-          <OneAchiv key={i} achiveIcon={achiveIcon} i={i} />
-        ))}
-      </div>
+      <button onClick={() => testUnlock(prompt())} className={styles.btn}>
+        test unlock
+      </button>
+      {sorted.length > 0 ? (
+        <div className={styles.userAchivment}>
+          {sorted.map((el, i) => (
+            <OneAchiv key={i} el={el} />
+          ))}
+        </div>
+      ) : (
+        <Spinner />
+      )}
     </>
   );
 };
