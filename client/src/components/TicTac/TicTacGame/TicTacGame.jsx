@@ -7,6 +7,7 @@ import styles from './ticTacGame.module.css'
 export default function TicTacGame() {
   const [board, setBoard] = useState(Array(9).fill(null));
   const [xIsNext, setXUsNext] = useState(true)
+  const [score, setScore] = useState()
   const winner = calculateWinner(board)
 
   const handleClick = (index) => {
@@ -15,11 +16,19 @@ export default function TicTacGame() {
     boardCopy[index] = xIsNext ? 'x' : '0';
     setBoard(boardCopy);
     setXUsNext(!xIsNext)
+
+    if (winner) {
+      setScore(...score, score + 100)
+    }
   }
 
   return (    
     <div className={styles.wrapper}>
+      <button className={styles.btn} onClick={() => setBoard(Array(9).fill(null))}>Очистить поле</button>
         <Board cells={board} click={handleClick}/>
+        <div className={styles.winner}>
+          { winner ? 'Победитель ' + winner : 'Сейчас ходит ' + (xIsNext ? 'X' : '0') }
+        </div>
     </div>
   )
 }
