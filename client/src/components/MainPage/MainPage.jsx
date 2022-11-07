@@ -1,13 +1,15 @@
 import React from "react";
 import styles from "./MainPage.module.css";
 import { Link } from "react-router-dom";
+import Field from "../MainGame/Field/Field";
 
 export const MainPage = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.main}>
+        <Field></Field>
         <div className={styles.content}>
-          <div className={styles.slider}>
+          <div className={`animals ${styles.slider}`}>
             <Link to="/quiz" className={styles.gamecat}>
               Quiz
             </Link>

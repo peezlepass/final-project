@@ -1,82 +1,88 @@
-import React from 'react'
-import styles from "./field.module.css";
-import { Layer, Rect, Stage, Group } from 'react-konva';
-import { useState, useRef, useEffect } from 'react';
+import React from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-import {
-    CANVAS_SIZE,
-    HERO_START, 
-    SCALE,
-    SNAKE_GAME,
-    DIRECTIONS,
-    SPEED
-} from "../constants";
+// Logic of overlaping rectangles lives here
+function rectsOverlap(a, b) {
+  const leftOverlaps = a.x > b.x && a.x < b.x + b.width;
+  const rightOverlaps = a.x + a.width > b.x && a.x + a.width < b.x + b.width;
+  const topOverlaps = a.y > b.y && a.y < b.y + b.height;
+  const bottomOverlaps =
+    a.y + a.height > b.y && a.y + a.height < b.y + b.height;
 
-import { useInterval } from "../useInterval";
+  return (leftOverlaps || rightOverlaps) && (topOverlaps || bottomOverlaps);
+}
 
+export default function Field() {
+  const navigate = useNavigate();
+  //Geralt's position
+  const [position, setPosition] = useState({ x: 620, y: 100 });
 
-export default function Field({ height = 600, width = 800 }) {
-    // const field = [
-    //     ['1row', '1row', '1row', '1row', '1row', '1row'],
-    //     ['2row', '2row', '2row', '2row', '2row', '2row'],
-    //     ['3row', '3row', '3row', '3row', '3row', '3row']
-    // ]
-
-    // const hero = '🐺';
-
-    const canvasRef = useRef();
-    const [hero, setHero] = useState(HERO_START);
-    const [snakeGame, setSnakeGame] = useState(SNAKE_GAME);
-    const [dir, setDir] = useState([0, -1]);
-    const [speed, setSpeed] = useState(null);
-
-    useInterval(() => gameLoop(), speed);
-
-    const startGame = () => {
-        setHero(HERO_START);
-        setDir([0, -1]);
-        setSpeed(SPEED);
+  //Everytime position is updated - useEffect runs
+  useEffect(() => {
+    const geralt = document.querySelector(`.geralt`);
+    //Receiving Geralt's exact position on the screen
+    const geraltRect = geralt.getBoundingClientRect();
+    //Selecting all animals =>dom node list, looks like array
+    const animals = document.querySelectorAll(".animals a");
+    // Looping to check for overlap with each animal and navigate to their game if so
+    for (let i = 0; i < animals.length; i++) {
+      const animalRect = animals[i].getBoundingClientRect();
+      if (rectsOverlap(geraltRect, animalRect)) {
+        const url = new URL(animals[i].href);
+        navigate(url.pathname);
+        break;
+      }
     }
+  }, [position]);
 
-    const gameLoop = () => {
-        const heroCopy = JSON.parse(JSON.stringify(hero));
-        const newHeroHead = [heroCopy[0][0] + dir[0], heroCopy[0][1] + dir[1]];
-        heroCopy.unshift(newHeroHead);
-        setHero(heroCopy);
-        console.log(heroCopy)
+  useEffect(() => {
+    const keyHandler = (e) => {
+      if (e.key === "ArrowDown") {
+        setPosition((prevPosition) => {
+          return { ...prevPosition, y: prevPosition.y + 20 };
+        });
+      }
+      if (e.key === "ArrowUp") {
+        setPosition((prevPosition) => {
+          return { ...prevPosition, y: prevPosition.y - 20 };
+        });
+      }
+
+      if (e.key === "ArrowLeft") {
+        setPosition((prevPosition) => {
+          return { ...prevPosition, x: prevPosition.x - 20 };
+        });
+      }
+
+      if (e.key === "ArrowRight") {
+        setPosition((prevPosition) => {
+          return { ...prevPosition, x: prevPosition.x + 20 };
+        });
+      }
     };
+    document.addEventListener("keydown", keyHandler);
+    //Remove the eventListener on the Main Page when we unmount,
+    //To prevent double Listening when we remount
+    //We remount every time when we navigate to the Home Page
+    return () => {
+      document.removeEventListener("keydown", keyHandler);
+    };
+  }, []);
 
-
-    useEffect(() => {
-        const context = canvasRef.current.getContext("2d");
-        context.fillStyle = "blue";
-        context.setTransform(SCALE, 0, 0, SCALE, 0, 0);
-        context.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        hero.forEach(([x, y]) => context.fillRect(x, y, 1, 1));
-        console.log('Работает!', context.fillRect)
-
-        context.fillStyle = "black";
-        snakeGame.forEach(([x,y]) => context.fillRect(x,y, 1, 1))
-
-        // const tile = [[0, 0]];
-        // context.fillStyle = "red";
-        // tile.forEach(([x,y]) => context.fillRect(x,y, 2, 2))
-    }, [hero]);
-
-    return (
-        <div id="container" className={styles.container} role="button" tabIndex="0" onKeyDown={e => moveHero(e)}>
-            <canvas
-                style={{
-                    border: "3px solid black",
-                    backgroundColor: "",
-                }}
-                ref={ canvasRef }
-                width={`${CANVAS_SIZE[0]}px`}
-                height={`${CANVAS_SIZE[1]}px`}
-            />
-            <button onClick={startGame}>Клик</button>
-        </div>
-
-
-    )
+  return (
+    <div className="relative">
+      <p className="absolute top-10 left-0 right-0 uppercase font-bold text-witcher-gold text-3xl flex justify-center">
+        <span className="block bg-black p-4 border-2 border-witcher-gold">
+          Choose your adventure
+        </span>
+      </p>
+      <img
+        //Moving Geralt around
+        style={{ top: position.y, left: position.x }}
+        className="geralt absolute w-40"
+        src="/img/geralt.png"
+      />
+    </div>
+  );
 }
