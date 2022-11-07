@@ -10,6 +10,7 @@ import { MemoryBoard } from "./MEMORY_GAME/Board/MemoryBoard";
 import MinesweeperPage from "./Minesweeper/MinesweeperPage";
 import Canvas from "./SNAKE_GAME/Canvas/Canvas";
 import { Cabinet } from "./Cabinet/Cabinet";
+import TicTacGame from "./TicTac/TicTacGame/TicTacGame";
 // import Field from "./MainGame/Field/Field";
 
 export default function App() {
@@ -17,17 +18,15 @@ export default function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/login" element={<Login></Login>} />
-        <Route path="/register" element={<Register></Register>} />
+        <Route path="/login" element={<Login/>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="/" element={<MainPage />} />
         <Route path="/quiz" element={<Board />} />
         <Route path="/memorygame" element={<MemoryBoard />} />
-        <Route path="/" element={<Board />} />
-        <Route
-          path="/minesweeper"
-          element={<MinesweeperPage></MinesweeperPage>}
-        />
-        <Route path="/" element={<Board />} />
+        <Route path="/xox" element={<TicTacGame/>}/>
+        {/* <Route path="/" element={<Board />} /> */}
+        <Route path="/minesweeper" element={<MinesweeperPage/>}/>
+        {/* <Route path="/" element={<Board />} /> */}
         <Route path="/snake" element={<Canvas />} />
         <Route path="/cabinet" element={<Cabinet />} />
         {/* <Route path="/maingame" element={<Field />} /> */}
