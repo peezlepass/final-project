@@ -43,7 +43,7 @@ export default function Header() {
         ) : (
           <div className={styles.container}>
             <div className={styles.logo}>
-            <h1 onClick={() => navigate("/")}>LOGO</h1>
+            <h1 onClick={() => navigate("/")}>ElbrusArcades</h1>
             </div>
             <div className={styles.usermenu}>
               <div className={styles.menu}>
