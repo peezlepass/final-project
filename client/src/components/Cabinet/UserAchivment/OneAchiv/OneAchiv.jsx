@@ -4,7 +4,7 @@ import styles from "./OneAchiv.module.css";
 export const OneAchiv = ({ el }) => {
   return (
     <>
-      <div className={styles.achive}>
+      <div className={!el.status ? styles.achive : styles.achive_unlock}>
         <div className={styles.layoutImg}>
           <div
             style={{ backgroundImage: `url(${el.img})` }}

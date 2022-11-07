@@ -7,16 +7,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 export const UserAchivment = () => {
   const achivState = useSelector((state) => state.achiv);
-  console.log(achivState);
+  const sorted = [...achivState].sort((a, b) => a.id - b.id);
   const dispatch = useDispatch();
   React.useEffect(() => {
     dispatch(action.getAchiv());
-  }, []);
+  }, [dispatch]);
+  const testUnlock = (id) => {
+    dispatch(action.changeStatus(id));
+  };
   return (
     <>
-      {achivState.length > 0 ? (
+      <button onClick={() => testUnlock(prompt())} className={styles.btn}>
+        test unlock
+      </button>
+      {sorted.length > 0 ? (
         <div className={styles.userAchivment}>
-          {achivState.map((el, i) => (
+          {sorted.map((el, i) => (
             <OneAchiv key={i} el={el} />
           ))}
         </div>
