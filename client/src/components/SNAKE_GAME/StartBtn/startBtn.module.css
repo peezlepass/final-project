@@ -1,7 +1,7 @@
 .btn {
-  width: 150px;
+  /* width: 150px; */
   height: 40px;
-  color: #fff;
+  color: rgb(200 194 173);
   border-radius: 5px;
   padding: 10px 25px;
   font-family: 'Lato', sans-serif;
@@ -15,7 +15,7 @@
    7px 7px 20px 0px rgba(0,0,0,.1),
    4px 4px 5px 0px rgba(0,0,0,.1);
   outline: none;
-  background: #07c16c;
+  background: #436857;
   border: none;
   z-index: 1;
   /* margin: 0 auto; */
@@ -38,7 +38,7 @@
     transition: all 0.3s ease;
   }
   .btn:hover {
-    color: #fff;
+    color: rgb(200 194 173);
   }
   .btn:hover:after {
     left: 0;

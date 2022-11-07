@@ -11,11 +11,11 @@
     flex-direction: column;
 }
 .wrapper {
-    background: url('https://i.pinimg.com/originals/fb/e2/a0/fbe2a0b7d9b66aa32e7ea8026cf5b4e6.jpg') no-repeat;
+    background: url('https://cdn.wallpapersafari.com/61/70/UPy0TO.png') no-repeat;
     min-height: 100vh;
     /* margin-top: -20px; */
     background-size: cover;
-    height: 91.5vh;
+    min-height: 91.5vh;
 }
 .score, .gameover {
     font-size: 30px;

@@ -9,6 +9,20 @@ export const Game = () => {
   const step = useSelector((state) => state.quiz.step);
   const dispatch = useDispatch();
 
+  React.useEffect(() => {
+    console.log("step", step, "questions.length", questions.length);
+    if (step === questions.length - 1) {
+      console.log("won");
+      fetch("/scores", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ gameName: "quiz", score: 100 }),
+      });
+    }
+  }, [step]);
+
   function userAnswer(e, id) {
     const userChoice = e.target.textContent;
     if (userChoice === questions[step].current) {
@@ -18,9 +32,7 @@ export const Game = () => {
       console.log("Неверно");
       dispatch(action.changeStatus(id, false));
     }
-    setTimeout(() => {
-      dispatch(action.nextQuestion());
-    }, 1000);
+    dispatch(action.nextQuestion());
   }
 
   return (
@@ -39,6 +51,12 @@ export const Game = () => {
             </div>
             <div onClick={(e) => userAnswer(e, questions[step].id)}>
               {questions[step].var2}
+            </div>
+            <div onClick={(e) => userAnswer(e, questions[step].id)}>
+              {questions[step].var3}
+            </div>
+            <div onClick={(e) => userAnswer(e, questions[step].id)}>
+              {questions[step].var4}
             </div>
           </div>
         </div>
