@@ -52,6 +52,12 @@ export const Game = () => {
             <div onClick={(e) => userAnswer(e, questions[step].id)}>
               {questions[step].var2}
             </div>
+            <div onClick={(e) => userAnswer(e, questions[step].id)}>
+              {questions[step].var3}
+            </div>
+            <div onClick={(e) => userAnswer(e, questions[step].id)}>
+              {questions[step].var4}
+            </div>
           </div>
         </div>
       ) : (
