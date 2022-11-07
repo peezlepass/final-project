@@ -1,5 +1,6 @@
-.achive {
-  cursor: pointer;
+.achive,
+.achive_unlock {
+  cursor: not-allowed;
   width: 90%;
   margin: 0 auto;
   padding: 10px 15px;
@@ -9,10 +10,20 @@
   border: 0.5px solid rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
+}
+
+.achive {
+  cursor: not-allowed;
+  background: rgba(220, 220, 220, 0.392);
+  filter: grayscale(1) contrast(0.5);
+}
+
+.achive_unlock {
+  cursor: pointer;
   background: rgba(220, 220, 220, 0.392);
 }
 
-.achive:hover {
+.achive_unlock:hover {
   filter: contrast(0.9);
 }
 
