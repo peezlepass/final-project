@@ -1,6 +1,24 @@
 .canvas {
     border: 1px solid black;
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    /* background-color: greenyellow; */
+    /* margin: 0 auto; */
 }
 .container {
-    margin: 30px 23%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.wrapper {
+    background: url('https://i.pinimg.com/originals/fb/e2/a0/fbe2a0b7d9b66aa32e7ea8026cf5b4e6.jpg') no-repeat;
+    height: 100%;
+    /* margin-top: -20px; */
+    background-size: 100%;
+}
+.score, .gameover {
+    font-size: 30px;
+    padding: 20px;
+    color: rgb(172, 15, 15);
+    font-weight: bold;
 }

@@ -20,6 +20,7 @@ module.exports = {
         "red-bomb": "rgb(253, 0, 6)",
         "red-flag": "rgb(254, 139, 143)",
         "restart-border": "rgb(129, 130, 133)",
+        "witcher-gold": "rgb(200, 194,173)",
       },
     },
   },
