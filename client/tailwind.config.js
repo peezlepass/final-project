@@ -3,6 +3,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      backgroundImage: {
+        minesweeper: "url('/public/img/minesweeper-bg.png')",
+      },
+      minHeight: {
+        screen: "calc(100vh - 80px)",
+      },
       borderWidth: {
         6: "6px",
       },
