@@ -3,6 +3,8 @@ import Field from "./Field";
 import { useReducer, useEffect } from "react";
 import { generateMinefield, generateUserField } from "./minesweeper";
 import minesweeperReducer from "./reducer";
+import WinnerMessage from "./WinnerMessage";
+import Instructions from "./Instructions";
 
 export default function Board() {
   const initialState = {
@@ -47,22 +49,30 @@ export default function Board() {
   }, [state.gameStatus]);
 
   return (
-    <div
-      className="bg-empty-cell-color border-8 flex flex-col gap-y-4 p-4 select-none mt-8"
-      style={{ borderStyle: "outset" }}
-    >
-      <Header
-        leftCounter={state.guessesRemaining}
-        rightCounter={state.timer}
-        dispatch={dispatch}
-        mood={mood}
-      ></Header>
-      <Field
-        userField={state.userField}
-        dispatch={dispatch}
-        width={9}
-        height={9}
-      ></Field>
+    <div className="flex justify-center">
+      <div className="flex flex-col justify-center px-8 w-96">
+        {state.gameStatus === "ready" ? <Instructions></Instructions> : null}
+      </div>
+      <div
+        className="bg-empty-cell-color border-8 flex flex-col gap-y-4 p-4 select-none mt-8 w-[568px]"
+        style={{ borderStyle: "outset" }}
+      >
+        <Header
+          leftCounter={state.guessesRemaining}
+          rightCounter={state.timer}
+          dispatch={dispatch}
+          mood={mood}
+        ></Header>
+        <Field
+          userField={state.userField}
+          dispatch={dispatch}
+          width={9}
+          height={9}
+        ></Field>
+      </div>
+      <div className="flex flex-col justify-center px-8 w-96">
+        {state.gameStatus === "won" ? <WinnerMessage></WinnerMessage> : null}
+      </div>
     </div>
   );
 }
