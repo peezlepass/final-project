@@ -66,11 +66,6 @@ export function UserRecords() {
           <h3 className="font-bold uppercase text-2xl">Snake</h3>
           <span>{findScore(yourScores, "snake")}</span>
         </li>
-        <li className="flex flex-col items-center">
-          <img src="/img/wolf.jpg" />
-          <h3 className="font-bold uppercase text-2xl">Flashcards</h3>
-          <span>{findScore(yourScores, "flashcards")}</span>
-        </li>
       </ol>
     </div>
   );

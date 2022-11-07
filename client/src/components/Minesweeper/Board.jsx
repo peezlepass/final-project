@@ -48,7 +48,7 @@ export default function Board() {
 
   return (
     <div
-      className="bg-empty-cell-color border-8 flex flex-col gap-y-4 p-4 select-none"
+      className="bg-empty-cell-color border-8 flex flex-col gap-y-4 p-4 select-none mt-8"
       style={{ borderStyle: "outset" }}
     >
       <Header
