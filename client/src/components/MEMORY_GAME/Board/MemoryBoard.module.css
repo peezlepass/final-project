@@ -1,12 +1,31 @@
+.overlay {
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainBoard {
+  width: 1300px;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.05), #151515d4), url('https://wallpapercave.com/wp/wp4721592.jpg') no-repeat;
+}
+
 .board {
   width: 600px;
   height: 600px;
-  background: tomato;
-  margin: 10px auto;
+  background: rgb(97, 28, 28);
+  margin: 0px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   user-select: none;
+  padding: 10px 5px 5px 5px;
 }
 
 .btn {

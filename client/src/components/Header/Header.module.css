@@ -1,9 +1,6 @@
-/* Можете потом грохунть этот модуль */
-
 .header {
   width: 100%;
   height: 80px;
-  /* color: rgb(200 194 173) ; */
   background: black;
   user-select: none;
 }
@@ -34,6 +31,14 @@
 .menu {
   display: flex;
   column-gap: 20px;
+}
+
+.menu div {
+  cursor: pointer;
+}
+
+.menu div:hover {
+  text-decoration: underline
 }
 
 .profile {
