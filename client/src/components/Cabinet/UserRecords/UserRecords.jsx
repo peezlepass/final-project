@@ -42,19 +42,14 @@ export function UserRecords() {
       </h2>
       <ol className="flex justify-around">
         <li className="flex flex-col items-center">
-          <img src="/img/wolf.jpg" />
-          <h3 className="font-bold uppercase text-2xl">Minesweeper</h3>
-          <span>{findScore(yourScores, "minesweeper")}</span>
-        </li>
-        <li className="flex flex-col items-center">
           <img className="" src="/img/cat.jpg" />
           <h3 className="font-bold uppercase text-2xl">Quiz</h3>
           <span>{findScore(yourScores, "quiz")}</span>
         </li>
         <li className="flex flex-col items-center">
-          <img src="/img/dragon.jpg" />
-          <h3 className="font-bold uppercase text-2xl">Memory</h3>
-          <span>{findScore(yourScores, "memorygame")}</span>
+          <img src="/img/snake.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Snake</h3>
+          <span>{findScore(yourScores, "snake")}</span>
         </li>
         <li className="flex flex-col items-center">
           <img src="/img/lion.jpg" />
@@ -62,9 +57,14 @@ export function UserRecords() {
           <span>{findScore(yourScores, "xox")}</span>
         </li>
         <li className="flex flex-col items-center">
-          <img src="/img/snake.jpg" />
-          <h3 className="font-bold uppercase text-2xl">Snake</h3>
-          <span>{findScore(yourScores, "snake")}</span>
+          <img src="/img/wolf.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Minesweeper</h3>
+          <span>{findScore(yourScores, "minesweeper")}</span>
+        </li>
+        <li className="flex flex-col items-center">
+          <img src="/img/dragon.jpg" />
+          <h3 className="font-bold uppercase text-2xl">Memory</h3>
+          <span>{findScore(yourScores, "memorygame")}</span>
         </li>
       </ol>
     </div>
