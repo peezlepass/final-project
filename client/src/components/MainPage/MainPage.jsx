@@ -13,21 +13,11 @@ export const MainPage = () => {
         <div className={styles.content}>
           {user ? (
             <div className={`animals ${styles.slider}`}>
-              <Link to="/quiz" className={styles.gamecat}>
-                Quiz
-              </Link>
-              <Link to="/snake" className={styles.gamesnake}>
-                Snake
-              </Link>
-              <Link to="/xox" className={styles.gamebear}>
-                XOX
-              </Link>
-              <Link to="/minesweeper" className={styles.gamewolf}>
-                Minesweeper
-              </Link>
-              <Link to="/memorygame" className={styles.gamedragon}>
-                Memory Game
-              </Link>
+              <Link to="/quiz" className={styles.gamecat}></Link>
+              <Link to="/snake" className={styles.gamesnake}></Link>
+              <Link to="/xox" className={styles.gamebear}></Link>
+              <Link to="/minesweeper" className={styles.gamewolf}></Link>
+              <Link to="/memorygame" className={styles.gamedragon}></Link>
             </div>
           ) : null}
         </div>
