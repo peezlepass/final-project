@@ -17,9 +17,9 @@ export const UserAchivment = () => {
   };
   return (
     <>
-      <button onClick={() => testUnlock(prompt())} className={styles.btn}>
+      {/* <button onClick={() => testUnlock(prompt())} className={styles.btn}>
         test unlock
-      </button>
+      </button> */}
       {sorted.length > 0 ? (
         <div className={styles.userAchivment}>
           {sorted.map((el, i) => (
@@ -27,7 +27,9 @@ export const UserAchivment = () => {
           ))}
         </div>
       ) : (
-        <Spinner />
+        <div className={styles.loading}>
+          <Spinner />
+        </div>
       )}
     </>
   );

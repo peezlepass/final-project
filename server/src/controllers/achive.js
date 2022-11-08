@@ -3,7 +3,9 @@ const { Achive } = require("../db/models");
 exports.getAchiv = async (req, res) => {
   try {
     const achivs = await Achive.findAll();
-    res.json(achivs);
+    setTimeout(() => {
+      res.json(achivs);
+    }, 1000);
   } catch (error) {
     res.json({
       message: error,

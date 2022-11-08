@@ -17,17 +17,7 @@
 }
 
 .board {
-  width: 600px;
-  height: 600px;
-  background: rgb(97, 28, 28);
-  margin: 0px auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  user-select: none;
-  padding: 10px 5px 5px 5px;
-}
-
-.btn {
-  background: gray;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 10px;
 }

@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       cardId: DataTypes.INTEGER,
       img: DataTypes.TEXT,
-      status: DataTypes.TEXT,
+      matched: DataTypes.BOOLEAN,
     },
     {
       sequelize,

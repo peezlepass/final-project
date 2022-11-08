@@ -1,7 +1,6 @@
 import React from "react";
 import { Card } from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import styles from "./MemoryBoard.module.css";
 import * as action from "../../../redux/reducers/memoryReducer/action";
 
@@ -10,26 +9,44 @@ export const MemoryBoard = () => {
   const cards = useSelector((state) => state.memory);
   const cardsRandom = [...cards].sort(() => Math.random() - 0.5);
 
-  const [prev, setPrev] = React.useState(-1);
+  const [card, setCard] = React.useState([]);
+  const [turns, setTurns] = React.useState(0);
+  const [choiceOne, setChoiceOne] = React.useState(null);
+  const [choiceTwo, setChoiceTwo] = React.useState(null);
+
+  const handleClick = (card) => {
+    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  };
 
   React.useEffect(() => {
     dispatch(action.getCards());
   }, []);
 
-  const check = (current) => {
-    if (cards[current].id === cards[prev].id) {
-      alert(1);
-    } else {
-      alert(2);
-    }
-  };
+  React.useEffect(() => {
+    setCard(cardsRandom);
+  }, []);
 
-  const userChoice = (id) => {
-    if (prev === -1) {
-      setPrev(id);
-    } else {
-      check(id);
+  React.useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      if (choiceOne.cardId === choiceTwo.cardId) {
+        setCard((prev) => {
+          return prev.map((el) =>
+            el.cardId === choiceOne.cardId ? { ...el, matched: true } : el
+          );
+        });
+        resetTurn();
+      } else {
+        setTimeout(() => {
+          resetTurn();
+        }, 1000);
+      }
     }
+  }, [choiceOne, choiceTwo]);
+
+  const resetTurn = () => {
+    setChoiceOne(null);
+    setChoiceTwo(null);
+    setTurns((prev) => prev + 1);
   };
 
   return (
@@ -37,8 +54,17 @@ export const MemoryBoard = () => {
       <div className={styles.mainBoard}>
         {cards.length > 0 ? (
           <div className={styles.board}>
-            {cardsRandom.map((el, i) => (
-              <Card key={i} el={el} userChoice={userChoice} />
+            {card.map((card, i) => (
+              <Card
+                key={i}
+                card={card}
+                handleClick={handleClick}
+                flipped={
+                  card === choiceOne ||
+                  card === choiceTwo ||
+                  card === card.matched
+                }
+              />
             ))}
           </div>
         ) : (
