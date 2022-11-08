@@ -1,3 +1,6 @@
+.name {
+  color: rgb(0, 0, 0);
+}
 .layout {
   width: 100%;
   min-height: calc(100vh - 80px);
@@ -7,7 +10,7 @@
 
 .cabinet {
   width: 1200px;
-  background: white;
+  background: rgb(200 194 173);
   height: 100%;
   margin: 0 auto;
   position: relative;
@@ -48,6 +51,7 @@
   padding: 0 10px;
   margin-left: 5px;
   transform: translateY(5px);
+  background-color: rgba(163, 159, 159, 0.791);
 }
 
 .userControls div:hover {
