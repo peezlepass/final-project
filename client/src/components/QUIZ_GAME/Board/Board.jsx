@@ -22,8 +22,10 @@ export const Board = () => {
   };
 
   return (
-    <div className={styles.main}>
-      {questions.length !== step ? <Game /> : <EndGame />}
+    <div className={styles.overlay}>
+      <div className={styles.main}>
+        {questions.length !== step ? <Game /> : <EndGame />}
+      </div>
     </div>
   );
 };
