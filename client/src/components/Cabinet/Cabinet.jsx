@@ -26,7 +26,7 @@ export const Cabinet = () => {
         <div className={styles.cabinet}>
           <div className={styles.cabinetHeader}>
             <div className={styles.userName}>
-              {user.name}
+              <p className={styles.name}>{user.name}</p>
               <div className={styles.userControls}>
                 <div
                   onClick={() => selectBtn(1)}

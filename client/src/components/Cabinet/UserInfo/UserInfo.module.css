@@ -10,10 +10,11 @@
 .userAvatar {
   width: 30%;
   height: 70%;
-  background: rgb(180, 180, 180);
+  background: rgba(197, 197, 197, 0.532);
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .avatar {
@@ -26,9 +27,10 @@
 }
 
 .userStat {
-  width: 65%;
+  width: 55%;
   border: 1px solid black;
-  padding: 20px 50px;
+  background-color: rgba(197, 197, 197, 0.532);
+  padding: 20px 70px;
   font-size: 20px;
 }
 
@@ -47,8 +49,9 @@
 .userBirth div:nth-child(1),
 .userLocation div:nth-child(1),
 .userMeeting div:nth-child(1) {
-  color: gray;
-  border: 1px solid gray;
-  width: 30%;
+  color: rgb(1, 1, 1);
+  /* border: 1px solid gray;
+  width: 30%; */
   padding-left: 5px;
 }
+
