@@ -26,6 +26,15 @@
   text-align: center;
 }
 
+.message {
+  text-shadow: 1px 1px black;
+  font-size: 2rem;
+  color: rgb(200 194 173);
+  padding: 10px 0;
+  text-align: center;
+  transform: translateY(-220px);
+}
+
 .btn {
   cursor: pointer;
   margin: 5px;

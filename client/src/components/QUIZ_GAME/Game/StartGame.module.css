@@ -1,7 +1,7 @@
 .startGame {
   width: 900px;
   height: 500px;
-  margin: 0 auto;
+  margin: 30px auto;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 16px, rgba(0, 0, 0, 0.2) 0px 5px 25px;
   text-align: center;
   background-size: cover;
@@ -14,6 +14,27 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.scorelength {
+  width: 100%;
+  background: rgb(145, 41, 41);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-30px);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 50px 5px 50px;
+}
+
+.scorelength::after {
+  content: '';
+  width: 90%;
+  height: 1px;
+  background: rgb(200 194 173);
+  position: absolute;
+  bottom: 0;
 }
 
 .title {

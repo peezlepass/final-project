@@ -4,13 +4,12 @@ import * as action from "../../../redux/reducers/quizReducer/actions";
 import { Spinner } from "../../Spinner/Spinner";
 import styles from "./StartGame.module.css";
 
-export const Game = () => {
+export const Game = ({ current, setCurrent }) => {
   const questions = useSelector((state) => state.quiz.allQuestions);
   const step = useSelector((state) => state.quiz.step);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
-    console.log("step", step, "questions.length", questions.length);
     if (step === questions.length - 1) {
       console.log("won");
       fetch("/scores", {
@@ -18,7 +17,7 @@ export const Game = () => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ gameName: "quiz", score: 100 }),
+        body: JSON.stringify({ gameName: "quiz", score: current * 1 }),
       });
     }
   }, [step]);
@@ -27,6 +26,7 @@ export const Game = () => {
     const userChoice = e.target.textContent;
     if (userChoice === questions[step].current) {
       console.log("Верно");
+      setCurrent((prev) => prev + 1);
       dispatch(action.changeStatus(id, true));
     } else {
       console.log("Неверно");
@@ -44,7 +44,15 @@ export const Game = () => {
           }}
           className={styles.startGame}
         >
-          <h2 className={styles.title}>{questions[step].question}</h2>
+          <h2 className={styles.title}>
+            {questions[step].question}
+            <div className={styles.scorelength}>
+              <div>
+                Вопрос {step + 1} из {questions.length}
+              </div>
+              <div>Верных ответов: {current}</div>
+            </div>
+          </h2>
           <div className={styles.variables}>
             <div onClick={(e) => userAnswer(e, questions[step].id)}>
               {questions[step].var1}

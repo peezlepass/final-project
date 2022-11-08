@@ -55,7 +55,7 @@
 
 .gamesnake:hover {
   color: rgb(107, 100, 76);
-  background: rgb(212, 212, 212);
+  background: rgba(190, 53, 53, 0.534);
   transform: scale(1.2);
   background-image: url("https://vignette.wikia.nocookie.net/witcher/images/b/bb/Viper_School_medallion.png/revision/latest?cb=20190503155758");
   background-size: 57%;
@@ -78,9 +78,8 @@
 
 .gamewolf:hover {
   color: rgb(107, 100, 76);
-  background: rgb(212, 212, 212);
+  background: rgba(190, 53, 53, 0.534);
   transform: scale(1.2);
-  /* background-image: url('./../../../public/img/snake.jpg'); */
   background-image: url("https://vignette.wikia.nocookie.net/witcher/images/8/88/Witcher_medallion.png/revision/latest?cb=20180204181454");
   background-size: 80%;
   background-repeat: no-repeat;
@@ -102,7 +101,7 @@
 
 .gamebear:hover {
   color: rgb(107, 100, 76);
-  background: rgb(212, 212, 212);
+  background: rgba(190, 53, 53, 0.534);
   transform: scale(1.2);
   background-image: url("https://vignette.wikia.nocookie.net/witcher/images/9/9a/Bear_School_medallion.png/revision/latest?cb=20190311201037");
   background-size: 65%;
@@ -125,7 +124,7 @@
 
 .gamedragon:hover {
   color: rgb(107, 100, 76);
-  background: rgb(212, 212, 212);
+  background: rgba(190, 53, 53, 0.534);
   transform: scale(1.2);
   background-image: url("../../../public/img/dragomain.png");
   background-size: 75%;
