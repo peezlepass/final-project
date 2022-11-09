@@ -65,7 +65,9 @@ export const UserSettings = () => {
               </select>
             </div>
           </div>
-          <button className={styles.btn}>Сохранить</button>
+          <div className={styles.controls}>
+            <button className={styles.btn}>Сохранить</button>
+          </div>
         </form>
       </div>
     </>
