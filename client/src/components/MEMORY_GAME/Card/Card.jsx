@@ -1,20 +1,23 @@
 import React from "react";
 import styles from "./Card.module.css";
-import { useDispatch, useSelector } from "react-redux";
 
-export const Card = ({ el, userChoice }) => {
-  const cards = useSelector((state) => state.memory);
-  const dispatch = useDispatch();
-  const elClass = el.status ? `${el.status}` : "card";
-  console.log(elClass);
-
+export const Card = ({ card, handleChoice, flipped, disabled }) => {
+  const handleClick = () => {
+    if (!disabled) {
+      handleChoice(card);
+    }
+  };
   return (
-    <>
-      {cards.length > 0 ? (
-        <div onClick={() => userChoice(el.cardId)} className={styles.card}>
-          <img src={el.img} alt={el.cardId} />
-        </div>
-      ) : null}
-    </>
+    <div className={styles.card}>
+      <div className={flipped ? styles.flipped : ""}>
+        <img className={styles.front} src={card.src} alt="card front" />
+        <img
+          className={styles.back}
+          onClick={handleClick}
+          src="https://img.freepik.com/free-photo/dark-grunge-style-scratched-metal-surface_1048-12951.jpg?w=2000"
+          alt="back"
+        />
+      </div>
+    </div>
   );
 };

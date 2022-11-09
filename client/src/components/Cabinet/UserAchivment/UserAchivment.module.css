@@ -8,6 +8,12 @@
   align-items: center;
   row-gap: 5px;
 }
+
+.loading {
+  height: calc(100vh - 200px);
+  background: rgb(200 194 173);
+}
+
 .btn {
   display: block;
   border: 1px solid black;

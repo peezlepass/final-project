@@ -7,43 +7,129 @@ import * as action from "../../../redux/reducers/memoryReducer/action";
 
 export const MemoryBoard = () => {
   const dispatch = useDispatch();
-  const cards = useSelector((state) => state.memory);
-  const cardsRandom = [...cards].sort(() => Math.random() - 0.5);
+  const state = useSelector((state) => state.memory);
+  const navigate = useNavigate();
+  // стейты для игры
+  const [cards, setCards] = React.useState([]);
+  const [score, setScore] = React.useState(0);
+  const [choiceOne, setchoiceOne] = React.useState(null);
+  const [choiceTwo, setchoiceTwo] = React.useState(null);
+  const [disabled, setDisabled] = React.useState(false);
+  const [showTimer, setshowTimer] = React.useState(false);
+  const [timer, setTimer] = React.useState(0);
 
-  const [prev, setPrev] = React.useState(-1);
-
+  // Получаем карты с бека
   React.useEffect(() => {
     dispatch(action.getCards());
-  }, []);
+  }, [dispatch]);
 
-  const check = (current) => {
-    if (cards[current].id === cards[prev].id) {
-      alert(1);
-    } else {
-      alert(2);
-    }
+  // рандомим карты
+  React.useEffect(() => {
+    state.length > 0
+      ? setCards([...state].sort(() => Math.random() - 0.5))
+      : null;
+  }, [state]);
+
+  const handleChoice = (card) => {
+    setshowTimer(true);
+    choiceOne ? setchoiceTwo(card) : setchoiceOne(card);
   };
 
-  const userChoice = (id) => {
-    if (prev === -1) {
-      setPrev(id);
-    } else {
-      check(id);
+  React.useEffect(() => {
+    if (choiceOne && choiceTwo) {
+      setDisabled(true);
+      if (choiceOne.src === choiceTwo.src) {
+        setCards((prev) => {
+          return prev.map((el) =>
+            el.src === choiceOne.src ? { ...el, matched: true } : el
+          );
+        });
+        setScore((prev) => prev + 100);
+        resetTurn();
+      } else {
+        setTimeout(() => {
+          resetTurn();
+        }, 1000);
+      }
     }
+  }, [choiceOne, choiceTwo]);
+
+  React.useEffect(() => {
+    if (showTimer) {
+      const time = setTimeout(() => {
+        setTimer((prev) => prev + 1);
+      }, 1000);
+      return () => {
+        clearTimeout(time);
+      };
+    }
+  }, [showTimer, timer]);
+
+  React.useEffect(() => {
+    if (score === 800) {
+      fetch("/scores", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({
+          gameName: "memorygame",
+          score: Math.floor((score / timer) * 5),
+        }),
+      });
+    }
+  }, [score]);
+
+  const resetTurn = () => {
+    setchoiceOne(null);
+    setchoiceTwo(null);
+    setDisabled(false);
+  };
+
+  const restartGame = () => {
+    setchoiceOne(null);
+    setchoiceTwo(null);
+    setDisabled(false);
+    setScore(0);
+    navigate("/");
   };
 
   return (
     <div className={styles.overlay}>
       <div className={styles.mainBoard}>
-        {cards.length > 0 ? (
-          <div className={styles.board}>
-            {cardsRandom.map((el, i) => (
-              <Card key={i} el={el} userChoice={userChoice} />
-            ))}
-          </div>
-        ) : (
-          <p>loadong</p>
-        )}
+        <div className={styles.board}>
+          {cards.length > 0 ? (
+            <>
+              {score !== 800 ? (
+                <>
+                  <div className={styles.score}>Вы набрали {score} очков</div>
+                  <div className={styles.card_grid}>
+                    {cards.map((card) => (
+                      <Card
+                        key={card.id}
+                        card={card}
+                        handleChoice={handleChoice}
+                        flipped={
+                          card === choiceOne ||
+                          card === choiceTwo ||
+                          card.matched
+                        }
+                        disabled={disabled}
+                      />
+                    ))}
+                  </div>
+                  {showTimer ? (
+                    <div className={styles.timer}>Прошло: {timer} секунд</div>
+                  ) : null}
+                </>
+              ) : (
+                <button onClick={restartGame} className={styles.btn}>
+                  На гланввную
+                </button>
+              )}
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   );

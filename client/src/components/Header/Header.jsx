@@ -34,16 +34,14 @@ export default function Header() {
                     alt="logo"
                   />
                 </div>
-                <button onClick={logoutUser} type="button">
-                  Logout
-                </button>
+                <div onClick={logoutUser}>Logout</div>
               </div>
             </div>
           </div>
         ) : (
           <div className={styles.container}>
             <div className={styles.logo}>
-            <h1 onClick={() => navigate("/")}>ElbrusArcades</h1>
+              <h1 onClick={() => navigate("/")}>ElbrusArcades</h1>
             </div>
             <div className={styles.usermenu}>
               <div className={styles.menu}>
