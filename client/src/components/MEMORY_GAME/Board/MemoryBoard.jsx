@@ -15,6 +15,8 @@ export const MemoryBoard = () => {
   const [choiceOne, setchoiceOne] = React.useState(null);
   const [choiceTwo, setchoiceTwo] = React.useState(null);
   const [disabled, setDisabled] = React.useState(false);
+  const [showTimer, setshowTimer] = React.useState(false);
+  const [timer, setTimer] = React.useState(0);
 
   // Получаем карты с бека
   React.useEffect(() => {
@@ -34,6 +36,7 @@ export const MemoryBoard = () => {
   }, [state]);
 
   const handleChoice = (card) => {
+    setshowTimer(true);
     choiceOne ? setchoiceTwo(card) : setchoiceOne(card);
   };
 
@@ -46,7 +49,7 @@ export const MemoryBoard = () => {
             el.src === choiceOne.src ? { ...el, matched: true } : el
           );
         });
-        setScore((prev) => prev + 5);
+        setScore((prev) => prev + 100);
         resetTurn();
       } else {
         setTimeout(() => {
@@ -57,16 +60,29 @@ export const MemoryBoard = () => {
   }, [choiceOne, choiceTwo]);
 
   React.useEffect(() => {
-    if (score === 40) {
+    if (showTimer) {
+      const time = setTimeout(() => {
+        setTimer((prev) => prev + 1);
+      }, 1000);
+      return () => {
+        clearTimeout(time);
+      };
+    }
+  }, [showTimer, timer]);
+
+  React.useEffect(() => {
+    if (score === 800) {
       fetch("/scores", {
         method: "POST",
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ gameName: "memorygame", score: score * 1 }),
+        body: JSON.stringify({
+          gameName: "memorygame",
+          score: Math.floor((score / timer) * 5),
+        }),
       });
     }
-    console.log(score);
   }, [score]);
 
   const resetTurn = () => {
@@ -89,9 +105,8 @@ export const MemoryBoard = () => {
         <div className={styles.board}>
           {cards.length > 0 ? (
             <>
-              {score !== 40 ? (
+              {score !== 800 ? (
                 <>
-                  {" "}
                   <div className={styles.score}>Вы набрали {score} очков</div>
                   <div className={styles.card_grid}>
                     {cards.map((card) => (
@@ -108,6 +123,9 @@ export const MemoryBoard = () => {
                       />
                     ))}
                   </div>
+                  {showTimer ? (
+                    <div className={styles.timer}>Прошло: {timer} секунд</div>
+                  ) : null}
                 </>
               ) : (
                 <button onClick={restartGame} className={styles.btn}>

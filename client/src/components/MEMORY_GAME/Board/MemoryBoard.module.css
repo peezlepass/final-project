@@ -53,6 +53,13 @@ button {
   grid-gap: 5px;
 }
 
+.timer {
+  color: white;
+  font-size: 30px;
+  text-align: center;
+  line-height: 2;
+}
+
 .btn {
   width: 140px;
 }
