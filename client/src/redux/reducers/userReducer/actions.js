@@ -49,3 +49,21 @@ export function logout(e) {
     dispatch({ type: type.LOGOUT });
   };
 }
+
+export function updateInfo(e) {
+  e.preventDefault();
+  const userData = {
+    gender: e.target.userGender.value,
+    country: e.target.userCountry.value,
+    birthday: `${e.target.day.value}.${e.target.month.value}.${e.target.year.value}`,
+  };
+  return async (dispatch) => {
+    const response = await fetch("/changeInfo", {
+      method: "PUT",
+      body: JSON.stringify(userData),
+      headers: { "Content-type": "application/json" },
+    });
+    const user = await response.json();
+    dispatch({ type: type.UPDATE_USER, payload: user.message });
+  };
+}

@@ -38,6 +38,12 @@ export default function userReducer(
         user: null,
       };
 
+    case types.UPDATE_USER:
+      return {
+        ...prevState,
+        user: payload,
+      };
+
     default:
       return prevState;
   }

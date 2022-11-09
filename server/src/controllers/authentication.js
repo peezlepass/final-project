@@ -9,7 +9,15 @@ exports.register = async (req, res) => {
   req.session.save(() => {
     res.json({
       success: true,
-      user: { id: user.id, name: user.name, email: user.email },
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        gender: user.gender,
+        country: user.country,
+        birthday: user.birthday,
+        src: user.src,
+      },
     });
   });
 };
@@ -23,7 +31,15 @@ exports.login = async (req, res) => {
     req.session.save(() => {
       res.json({
         success: true,
-        user: { id: user.id, email: user.email, name: user.name },
+        user: {
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          gender: user.gender,
+          country: user.country,
+          birthday: user.birthday,
+          src: user.src,
+        },
       });
     });
   } else {
@@ -36,4 +52,31 @@ exports.logout = (req, res) => {
     res.clearCookie("GameSession");
     res.json({ success: true });
   });
+};
+
+exports.changeInfo = async (req, res) => {
+  try {
+    const id = req.session.userId;
+    const findUser = await User.findOne({ where: id });
+    if (findUser) {
+      const updateUser = await User.update(
+        {
+          gender: req.body.gender,
+          country: req.body.country,
+          birthday: req.body.birthday,
+        },
+        {
+          where: { id },
+        }
+      );
+      const findAgain = await User.findOne({ where: id });
+      res.json({
+        message: findAgain,
+      });
+    }
+  } catch (error) {
+    res.json({
+      message: error,
+    });
+  }
 };
