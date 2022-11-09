@@ -23,16 +23,11 @@ export const MemoryBoard = () => {
     dispatch(action.getCards());
   }, [dispatch]);
 
-  // двоим карты
-  const showCards = () => {
-    const shuffledCards = [...state, ...state]
-      .map((card) => ({ ...card, id: Math.random() * 99 }))
-      .sort(() => Math.random - 0.5);
-    setCards(shuffledCards);
-  };
-
+  // рандомим карты
   React.useEffect(() => {
-    state.length > 0 ? showCards() : null;
+    state.length > 0
+      ? setCards([...state].sort(() => Math.random() - 0.5))
+      : null;
   }, [state]);
 
   const handleChoice = (card) => {
