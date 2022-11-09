@@ -1,10 +1,13 @@
 import Cell from "./Cell";
 
-export default function Field({ userField, width, height, dispatch }) {
+export default function Field({ userField, width, dispatch }) {
   return (
     <div
-      className="bg-empty-cell-color border-8 grid grid-cols-9 grid-rows-9"
-      style={{ borderStyle: "inset" }}
+      className="bg-empty-cell-color border-8 grid"
+      style={{
+        borderStyle: "inset",
+        gridTemplateColumns: `repeat(${width}, minmax(0, 1fr))`,
+      }}
     >
       {userField.map((cell, index) => {
         return (
