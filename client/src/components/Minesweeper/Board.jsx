@@ -6,14 +6,18 @@ import minesweeperReducer from "./reducer";
 import WinnerMessage from "./WinnerMessage";
 import Instructions from "./Instructions";
 
+const initialState = {
+  minefield: generateMinefield(81, 10, 9),
+  userField: generateUserField(81),
+  guessesRemaining: 10,
+  timer: 0,
+  gameStatus: "ready",
+  width: 9,
+  height: 9,
+  numberOfBombs: 10,
+};
+
 export default function Board() {
-  const initialState = {
-    minefield: generateMinefield(),
-    userField: generateUserField(),
-    guessesRemaining: 10,
-    timer: 0,
-    gameStatus: "ready",
-  };
   const [state, dispatch] = useReducer(minesweeperReducer, initialState);
   let mood = "";
   if (state.gameStatus === "ready") {
@@ -49,30 +53,56 @@ export default function Board() {
   }, [state.gameStatus]);
 
   return (
-    <div className="flex justify-center">
-      <div className="flex flex-col justify-center px-8 w-96">
-        {state.gameStatus === "ready" ? <Instructions></Instructions> : null}
+    <>
+      <div className="flex justify-center">
+        {state.width === 9 ? (
+          <div className="flex flex-col justify-center px-8 w-96">
+            {state.gameStatus === "ready" ? (
+              <Instructions></Instructions>
+            ) : null}
+          </div>
+        ) : null}
+        {/* w-[568px] */}
+        <div
+          className="bg-empty-cell-color border-8 flex flex-col gap-y-4 p-4 select-none mt-8"
+          style={{ borderStyle: "outset" }}
+        >
+          <Header
+            leftCounter={state.guessesRemaining}
+            rightCounter={state.timer}
+            dispatch={dispatch}
+            mood={mood}
+          ></Header>
+          <Field
+            userField={state.userField}
+            dispatch={dispatch}
+            width={state.width}
+          ></Field>
+        </div>
+        {state.width === 9 ? (
+          <div className="flex flex-col justify-center px-8 w-96">
+            {state.gameStatus === "won" ? (
+              <WinnerMessage></WinnerMessage>
+            ) : null}
+          </div>
+        ) : null}
       </div>
-      <div
-        className="bg-empty-cell-color border-8 flex flex-col gap-y-4 p-4 select-none mt-8 w-[568px]"
-        style={{ borderStyle: "outset" }}
-      >
-        <Header
-          leftCounter={state.guessesRemaining}
-          rightCounter={state.timer}
-          dispatch={dispatch}
-          mood={mood}
-        ></Header>
-        <Field
-          userField={state.userField}
-          dispatch={dispatch}
-          width={9}
-          height={9}
-        ></Field>
+      <div className="flex gap-x-4 text-witcher-gold justify-center py-4">
+        <button
+          onClick={() => {
+            dispatch({ type: "SET_DIFFICULTY", payload: "beginner" });
+          }}
+        >
+          Beginner
+        </button>
+        <button
+          onClick={() => {
+            dispatch({ type: "SET_DIFFICULTY", payload: "expert" });
+          }}
+        >
+          Expert
+        </button>
       </div>
-      <div className="flex flex-col justify-center px-8 w-96">
-        {state.gameStatus === "won" ? <WinnerMessage></WinnerMessage> : null}
-      </div>
-    </div>
+    </>
   );
 }

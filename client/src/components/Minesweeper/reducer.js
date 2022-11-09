@@ -36,7 +36,8 @@ export default function minesweeperReducer(prevState, { type, payload }) {
       const reveals = findReveals(
         payload,
         prevState.minefield,
-        prevState.userField
+        prevState.userField,
+        prevState.width
       );
       const newUserField = prevState.userField.map((cell, index) => {
         if (reveals.includes(index)) {
@@ -45,7 +46,7 @@ export default function minesweeperReducer(prevState, { type, payload }) {
           return cell;
         }
       });
-      if (hasWon(newUserField)) {
+      if (hasWon(newUserField, prevState.numberOfBombs)) {
         return {
           ...prevState,
           gameStatus: "won",
@@ -109,9 +110,13 @@ export default function minesweeperReducer(prevState, { type, payload }) {
     case "RESTART":
       return {
         ...prevState,
-        userField: generateUserField(),
-        minefield: generateMinefield(),
-        guessesRemaining: 10,
+        minefield: generateMinefield(
+          prevState.width * prevState.height,
+          prevState.numberOfBombs,
+          prevState.width
+        ),
+        userField: generateUserField(prevState.width * prevState.height),
+        guessesRemaining: prevState.numberOfBombs,
         timer: 0,
         gameStatus: "ready",
       };
@@ -125,6 +130,33 @@ export default function minesweeperReducer(prevState, { type, payload }) {
         };
       } else {
         return prevState;
+      }
+
+    case "SET_DIFFICULTY":
+      if (payload === "beginner") {
+        return {
+          ...prevState,
+          minefield: generateMinefield(81, 10, 9),
+          userField: generateUserField(81),
+          guessesRemaining: 10,
+          timer: 0,
+          gameStatus: "ready",
+          width: 9,
+          height: 9,
+          numberOfBombs: 10,
+        };
+      } else if (payload === "expert") {
+        return {
+          ...prevState,
+          minefield: generateMinefield(160, 25, 16),
+          userField: generateUserField(160),
+          guessesRemaining: 25,
+          timer: 0,
+          gameStatus: "ready",
+          width: 16,
+          height: 10,
+          numberOfBombs: 25,
+        };
       }
 
     default:
