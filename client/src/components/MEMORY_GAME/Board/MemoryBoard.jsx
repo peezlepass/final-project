@@ -56,6 +56,19 @@ export const MemoryBoard = () => {
     }
   }, [choiceOne, choiceTwo]);
 
+  React.useEffect(() => {
+    if (score === 40) {
+      fetch("/scores", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ gameName: "memorygame", score: score * 1 }),
+      });
+    }
+    console.log(score);
+  }, [score]);
+
   const resetTurn = () => {
     setchoiceOne(null);
     setchoiceTwo(null);
@@ -63,7 +76,6 @@ export const MemoryBoard = () => {
   };
 
   const restartGame = () => {
-    addScore();
     setchoiceOne(null);
     setchoiceTwo(null);
     setDisabled(false);
@@ -71,15 +83,13 @@ export const MemoryBoard = () => {
     navigate("/");
   };
 
-  const addScore = () => {};
-
   return (
     <div className={styles.overlay}>
       <div className={styles.mainBoard}>
         <div className={styles.board}>
           {cards.length > 0 ? (
             <>
-              {score !== 20 ? (
+              {score !== 40 ? (
                 <>
                   {" "}
                   <div className={styles.score}>Вы набрали {score} очков</div>

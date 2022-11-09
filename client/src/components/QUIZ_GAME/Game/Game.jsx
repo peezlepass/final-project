@@ -11,7 +11,6 @@ export const Game = ({ current, setCurrent }) => {
 
   React.useEffect(() => {
     if (step === questions.length - 1) {
-      console.log("won");
       fetch("/scores", {
         method: "POST",
         headers: {
@@ -25,11 +24,9 @@ export const Game = ({ current, setCurrent }) => {
   function userAnswer(e, id) {
     const userChoice = e.target.textContent;
     if (userChoice === questions[step].current) {
-      console.log("Верно");
       setCurrent((prev) => prev + 1);
       dispatch(action.changeStatus(id, true));
     } else {
-      console.log("Неверно");
       dispatch(action.changeStatus(id, false));
     }
     dispatch(action.nextQuestion());
