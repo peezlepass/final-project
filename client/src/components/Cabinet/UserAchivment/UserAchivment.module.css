@@ -1,0 +1,28 @@
+.userAchivment {
+  width: 100%;
+  /* height: 500px; */
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 5px;
+}
+
+.loading {
+  height: calc(100vh - 200px);
+  background: rgb(200 194 173);
+}
+
+.btn {
+  display: block;
+  border: 1px solid black;
+  padding: 10px;
+  width: 100px;
+  margin: 20px auto;
+}
+
+.btn:hover {
+  background: green;
+  color: white;
+}

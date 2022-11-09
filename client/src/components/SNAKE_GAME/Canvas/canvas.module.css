@@ -1,0 +1,25 @@
+.canvas {
+    border: 1px solid black;
+    background: rgba(255, 255, 255, 0.8); /* Полупрозрачный фон */
+    /* background-color: greenyellow; */
+    /* margin: 0 auto; */
+}
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.wrapper {
+    background: url('https://cdn.wallpapersafari.com/61/70/UPy0TO.png') no-repeat;
+    min-height: 100vh;
+    /* margin-top: -20px; */
+    background-size: cover;
+    min-height: 91.5vh;
+}
+.score, .gameover {
+    font-size: 30px;
+    padding: 20px;
+    color: rgb(172, 15, 15);
+    font-weight: bold;
+}

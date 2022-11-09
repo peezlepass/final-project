@@ -1,0 +1,68 @@
+.overlay {
+  width: 100%;
+  height: calc(100vh - 80px);
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.05), #151515d4), url('https://wallpapercave.com/wp/wp4721592.jpg') no-repeat;
+  background-size: cover;
+  user-select: none;
+}
+
+.mainBoard {
+  width: 1300px;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.board {
+  max-width: 860px;
+  margin: 20px auto;
+  transform: scale(0.85);
+}
+
+.score {
+  font-size: 30px;
+  color: rgb(200, 194, 173);
+  text-align: center;
+  line-height: 0;
+}
+
+button {
+  background: none;
+  border: 2px solid #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1em;
+}
+
+.button:hover {
+  background: #c23856;
+  color: #fff;
+}
+
+.card_grid {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-gap: 5px;
+}
+
+.timer {
+  color: rgb(172, 15, 15);
+  font-size: 30px;
+  font-weight: bold;
+  text-align: center;
+  line-height: 2;
+}
+
+.btn {
+  width: 140px;
+}

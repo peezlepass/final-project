@@ -1,0 +1,58 @@
+.card {
+  position: relative;
+  cursor: pointer;
+}
+
+.card .back {
+  transition: 0.5s ease;
+}
+
+.card .back:hover {
+  filter: brightness(0.6);
+}
+
+.card img:nth-child(1),
+.card img:nth-child(2) {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card img:nth-child(1) {
+  background: rgb(190, 53, 53);
+  ;
+}
+
+.card img:nth-child(2) {
+  background: rgb(190, 53, 53);
+}
+
+.card img {
+  width: 100%;
+  display: block;
+  border: 2px solid rgb(85, 26, 26);
+  border-radius: 6px;
+}
+
+.card .front {
+  transform: rotateY(90deg);
+  position: absolute;
+  transition: all ease-in 0.2s;
+}
+
+.flipped .front {
+  transform: rotateY(0deg);
+  transition-delay: 0.2s;
+}
+
+.card .back {
+  transition: all ease-in 0.2s;
+  transition-delay: 0.2s;
+}
+
+.flipped .back {
+  transform: rotateY(90deg);
+  transition-delay: 0s;
+}

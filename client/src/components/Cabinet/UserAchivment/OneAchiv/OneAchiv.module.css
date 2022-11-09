@@ -1,0 +1,71 @@
+.achive,
+.achive_unlock {
+  cursor: not-allowed;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 15px;
+  color: #555555;
+  font-size: 14px;
+  line-height: 20px;
+  border: 0.5px solid rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+}
+
+.achive {
+  cursor: not-allowed;
+  background: rgba(220, 220, 220, 0.392);
+  filter: grayscale(1) contrast(0.5);
+}
+
+.achive_unlock {
+  cursor: pointer;
+  background: rgba(220, 220, 220, 0.392);
+}
+
+.achive_unlock:hover {
+  filter: contrast(0.9);
+}
+
+.layoutImg {
+  width: 80px;
+  height: 80px;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.achiveImg {
+  width: 64px;
+  height: 64px;
+  background-size: contain;
+  filter: contrast(0.9);
+}
+
+.achiveInfo {
+  width: 92%;
+  height: 80px;
+  background: rgb(228, 228, 228);
+  border: 0.5px solid rgba(0, 0, 0, 0.246);
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  justify-content: center;
+  row-gap: 5px;
+}
+
+.achiveInfoTitle {
+  color: #347F0E;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.achiveInfoDesc {
+  font-size: 16px;
+}
+
+.achiveInfoScore {
+  font-size: 18px;
+  font-weight: bold;
+}
