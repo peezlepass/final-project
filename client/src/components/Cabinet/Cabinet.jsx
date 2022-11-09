@@ -4,6 +4,7 @@ import styles from "./cabinet.module.css";
 import { UserAchivment } from "./UserAchivment/UserAchivment";
 import { UserInfo } from "./UserInfo/UserInfo";
 import { UserRecords } from "./UserRecords/UserRecords";
+import { UserSettings } from "./UserSettings/UserSettings";
 
 const activeBtn = {
   background: "black",
@@ -16,6 +17,7 @@ export const Cabinet = () => {
     1: true,
     2: false,
     3: false,
+    4: false,
   });
   const selectBtn = (num) => {
     setSelect({ [num]: true });
@@ -46,12 +48,19 @@ export const Cabinet = () => {
                 >
                   Таблица рекордов
                 </div>
+                <div
+                  onClick={() => selectBtn(4)}
+                  style={select["4"] ? activeBtn : null}
+                >
+                  Настройки
+                </div>
               </div>
             </div>
           </div>
           {select[1] ? <UserInfo user={user} /> : ""}
           {select[2] ? <UserAchivment /> : ""}
           {select[3] ? <UserRecords /> : ""}
+          {select[4] ? <UserSettings /> : ""}
         </div>
       </div>
     </>

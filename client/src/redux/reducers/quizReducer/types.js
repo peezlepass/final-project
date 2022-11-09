@@ -1,0 +1,4 @@
+export const GET_QUESTIONS = "GET_QUESTIONS";
+export const CHANGE_STATUS = "CHANGE_STATUS";
+export const NEXT_QUESTION = "NEXT_QUESTION";
+export const RESTART_GAME = "RESTART_GAME";
