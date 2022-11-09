@@ -49,3 +49,27 @@ export function logout(e) {
     dispatch({ type: type.LOGOUT });
   };
 }
+
+export function updateInfo(e) {
+  e.preventDefault();
+  const day =
+    e.target.day.value < 10 ? `0${e.target.day.value}` : e.target.day.value;
+  const month =
+    e.target.month.value < 10
+      ? `0${e.target.month.value}`
+      : e.target.month.value;
+  const userData = {
+    gender: e.target.userGender.value,
+    country: e.target.userCountry.value,
+    birthday: `${day}.${month}.${e.target.year.value}`,
+  };
+  return async (dispatch) => {
+    const response = await fetch("/changeInfo", {
+      method: "PUT",
+      body: JSON.stringify(userData),
+      headers: { "Content-type": "application/json" },
+    });
+    const user = await response.json();
+    dispatch({ type: type.UPDATE_USER, payload: user.message });
+  };
+}
