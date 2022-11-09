@@ -1,39 +1,52 @@
 import React from "react";
 import { Card } from "../Card/Card";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styles from "./MemoryBoard.module.css";
 import * as action from "../../../redux/reducers/memoryReducer/action";
 
 export const MemoryBoard = () => {
   const dispatch = useDispatch();
-  const cards = useSelector((state) => state.memory);
-  const cardsRandom = [...cards].sort(() => Math.random() - 0.5);
+  const state = useSelector((state) => state.memory);
+  const navigate = useNavigate();
+  // стейты для игры
+  const [cards, setCards] = React.useState([]);
+  const [score, setScore] = React.useState(0);
+  const [choiceOne, setchoiceOne] = React.useState(null);
+  const [choiceTwo, setchoiceTwo] = React.useState(null);
+  const [disabled, setDisabled] = React.useState(false);
 
-  const [card, setCard] = React.useState([]);
-  const [turns, setTurns] = React.useState(0);
-  const [choiceOne, setChoiceOne] = React.useState(null);
-  const [choiceTwo, setChoiceTwo] = React.useState(null);
+  // Получаем карты с бека
+  React.useEffect(() => {
+    dispatch(action.getCards());
+  }, [dispatch]);
 
-  const handleClick = (card) => {
-    choiceOne ? setChoiceTwo(card) : setChoiceOne(card);
+  // двоим карты
+  const showCards = () => {
+    const shuffledCards = [...state, ...state]
+      .map((card) => ({ ...card, id: Math.random() * 99 }))
+      .sort(() => Math.random - 0.5);
+    setCards(shuffledCards);
   };
 
   React.useEffect(() => {
-    dispatch(action.getCards());
-  }, []);
+    state.length > 0 ? showCards() : null;
+  }, [state]);
 
-  React.useEffect(() => {
-    setCard(cardsRandom);
-  }, []);
+  const handleChoice = (card) => {
+    choiceOne ? setchoiceTwo(card) : setchoiceOne(card);
+  };
 
   React.useEffect(() => {
     if (choiceOne && choiceTwo) {
-      if (choiceOne.cardId === choiceTwo.cardId) {
-        setCard((prev) => {
+      setDisabled(true);
+      if (choiceOne.src === choiceTwo.src) {
+        setCards((prev) => {
           return prev.map((el) =>
-            el.cardId === choiceOne.cardId ? { ...el, matched: true } : el
+            el.src === choiceOne.src ? { ...el, matched: true } : el
           );
         });
+        setScore((prev) => prev + 5);
         resetTurn();
       } else {
         setTimeout(() => {
@@ -44,32 +57,56 @@ export const MemoryBoard = () => {
   }, [choiceOne, choiceTwo]);
 
   const resetTurn = () => {
-    setChoiceOne(null);
-    setChoiceTwo(null);
-    setTurns((prev) => prev + 1);
+    setchoiceOne(null);
+    setchoiceTwo(null);
+    setDisabled(false);
   };
+
+  const restartGame = () => {
+    addScore();
+    setchoiceOne(null);
+    setchoiceTwo(null);
+    setDisabled(false);
+    setScore(0);
+    navigate("/");
+  };
+
+  const addScore = () => {};
 
   return (
     <div className={styles.overlay}>
       <div className={styles.mainBoard}>
-        {cards.length > 0 ? (
-          <div className={styles.board}>
-            {card.map((card, i) => (
-              <Card
-                key={i}
-                card={card}
-                handleClick={handleClick}
-                flipped={
-                  card === choiceOne ||
-                  card === choiceTwo ||
-                  card === card.matched
-                }
-              />
-            ))}
-          </div>
-        ) : (
-          <p>loadong</p>
-        )}
+        <div className={styles.board}>
+          {cards.length > 0 ? (
+            <>
+              {score !== 20 ? (
+                <>
+                  {" "}
+                  <div className={styles.score}>Вы набрали {score} очков</div>
+                  <div className={styles.card_grid}>
+                    {cards.map((card) => (
+                      <Card
+                        key={card.id}
+                        card={card}
+                        handleChoice={handleChoice}
+                        flipped={
+                          card === choiceOne ||
+                          card === choiceTwo ||
+                          card.matched
+                        }
+                        disabled={disabled}
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : (
+                <button onClick={restartGame} className={styles.btn}>
+                  На гланввную
+                </button>
+              )}
+            </>
+          ) : null}
+        </div>
       </div>
     </div>
   );

@@ -6,8 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   MemoryGame.init(
     {
-      cardId: DataTypes.INTEGER,
-      img: DataTypes.TEXT,
+      src: DataTypes.TEXT,
       matched: DataTypes.BOOLEAN,
     },
     {

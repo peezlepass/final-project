@@ -9,10 +9,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      cardId: {
-        type: Sequelize.INTEGER,
-      },
-      img: {
+      src: {
         type: Sequelize.TEXT,
       },
       matched: {

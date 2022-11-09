@@ -18,17 +18,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 5px;
 }
 
 .card img:nth-child(1) {
-  background: navy;
+  background: rgb(190, 53, 53);
+  ;
+}
+
+.card img:nth-child(2) {
+  background: rgb(190, 53, 53);
 }
 
 .card img {
   width: 100%;
   display: block;
-  border: 2px solid white;
+  border: 2px solid rgb(85, 26, 26);
   border-radius: 6px;
 }
 
